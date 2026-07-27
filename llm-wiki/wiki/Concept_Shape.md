@@ -10,7 +10,7 @@ description: SHACL constraints for concept and article pages in this LLM Wiki.
 @prefix sh: <http://www.w3.org/ns/shacl#> .
 @prefix schema: <https://schema.org/> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
-@prefix wiki: <https://wazootech.github.io/llm-wiki-template/wiki/> .
+@prefix wiki: <https://wazootech.github.io/wiki-templates/llm-wiki/wiki/> .
 
 wiki:ConceptShape
   a sh:NodeShape ;

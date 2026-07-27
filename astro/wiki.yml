@@ -7,7 +7,7 @@ graph:
   content_predicate: schema:articleBody
   context:
     schema: https://schema.org/
-    wiki: https://wazootech.github.io/wiki-astro-template/wiki/
+    wiki: https://wazootech.github.io/wiki-templates/astro/wiki/
 lint:
   broken_links: warning
   filename_pattern: warning

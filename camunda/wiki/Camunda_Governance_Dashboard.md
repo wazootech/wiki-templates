@@ -13,7 +13,7 @@ description: Rendered inventory of process, decision, task, and integration gove
 ```sparql
 PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
 PREFIX schema: <https://schema.org/>
-PREFIX camunda: <https://wazootech.github.io/wiki-camunda-template/ns/camunda#>
+PREFIX camunda: <https://wazootech.github.io/wiki-templates/camunda/ns/camunda#>
 
 SELECT ?process ?owner WHERE {
   ?doc rdf:type camunda:CamundaProcess .
@@ -36,7 +36,7 @@ ORDER BY ?process
 ```sparql
 PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
 PREFIX schema: <https://schema.org/>
-PREFIX camunda: <https://wazootech.github.io/wiki-camunda-template/ns/camunda#>
+PREFIX camunda: <https://wazootech.github.io/wiki-templates/camunda/ns/camunda#>
 
 SELECT ?decision ?cadence WHERE {
   ?doc rdf:type camunda:DmnDecision .
@@ -59,7 +59,7 @@ ORDER BY ?decision
 ```sparql
 PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
 PREFIX schema: <https://schema.org/>
-PREFIX camunda: <https://wazootech.github.io/wiki-camunda-template/ns/camunda#>
+PREFIX camunda: <https://wazootech.github.io/wiki-templates/camunda/ns/camunda#>
 
 SELECT ?model ?processId WHERE {
   ?doc rdf:type camunda:BpmnModel .
@@ -82,7 +82,7 @@ ORDER BY ?model
 ```sparql
 PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
 PREFIX schema: <https://schema.org/>
-PREFIX camunda: <https://wazootech.github.io/wiki-camunda-template/ns/camunda#>
+PREFIX camunda: <https://wazootech.github.io/wiki-templates/camunda/ns/camunda#>
 
 SELECT ?task ?impl WHERE {
   ?doc rdf:type camunda:ServiceTask .
@@ -105,7 +105,7 @@ ORDER BY ?task
 ```sparql
 PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
 PREFIX schema: <https://schema.org/>
-PREFIX camunda: <https://wazootech.github.io/wiki-camunda-template/ns/camunda#>
+PREFIX camunda: <https://wazootech.github.io/wiki-templates/camunda/ns/camunda#>
 
 SELECT ?task ?form WHERE {
   ?task rdf:type camunda:UserTask .
@@ -126,7 +126,7 @@ ORDER BY ?task
 ```sparql
 PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
 PREFIX schema: <https://schema.org/>
-PREFIX camunda: <https://wazootech.github.io/wiki-camunda-template/ns/camunda#>
+PREFIX camunda: <https://wazootech.github.io/wiki-templates/camunda/ns/camunda#>
 
 SELECT ?sla ?target WHERE {
   ?doc rdf:type camunda:SLA .
@@ -149,7 +149,7 @@ ORDER BY ?sla
 ```sparql
 PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
 PREFIX schema: <https://schema.org/>
-PREFIX camunda: <https://wazootech.github.io/wiki-camunda-template/ns/camunda#>
+PREFIX camunda: <https://wazootech.github.io/wiki-templates/camunda/ns/camunda#>
 
 SELECT ?integration ?team WHERE {
   ?doc rdf:type camunda:SystemIntegration .
@@ -172,7 +172,7 @@ ORDER BY ?integration
 ```sparql
 PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
 PREFIX schema: <https://schema.org/>
-PREFIX camunda: <https://wazootech.github.io/wiki-camunda-template/ns/camunda#>
+PREFIX camunda: <https://wazootech.github.io/wiki-templates/camunda/ns/camunda#>
 
 SELECT ?kpi ?target WHERE {
   ?doc rdf:type camunda:KPI .

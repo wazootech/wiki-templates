@@ -1,4 +1,4 @@
-# Sample vault for wiki-yasgui-template (export, live SPARQL, Virtuoso load).
+# Sample vault for yasgui template (export, live SPARQL, Virtuoso load).
 wiki:
   inputs:
     - wiki
@@ -8,7 +8,7 @@ graph:
   content_predicate: schema:articleBody
   context:
     schema: https://schema.org/
-    wiki: https://wazootech.github.io/wiki-yasgui-template/sample/wiki/
+    wiki: https://wazootech.github.io/wiki-templates/yasgui/sample/wiki/
     rdf: http://www.w3.org/1999/02/22-rdf-syntax-ns#
     xsd: http://www.w3.org/2001/XMLSchema#
 

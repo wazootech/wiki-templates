@@ -1,21 +1,19 @@
-# wiki-yasgui-template
-
-[![Use this template](https://img.shields.io/badge/Use%20this%20template-2ea44f?style=for-the-badge)](https://github.com/wazootech/wiki-yasgui-template/generate)
+# YASGUI Template
 
 Explore [Wiki CLI](https://github.com/wazootech/wiki) vault RDF with [YASGUI](https://yasgui.org/). This template ships a minimal typed sample vault, a pre-exported Turtle graph for static hosting, and GitHub Actions to refresh the export and deploy a browser demo.
 
-Ecosystem registry: [Wiki CLI templates](https://github.com/wazootech/wiki/blob/main/docs/wiki/Wiki_CLI.md#ecosystem-templates).
+Ecosystem registry: [Wiki CLI templates](https://github.com/wazootech/wiki/blob/main/docs/wiki/wiki.md#ecosystem-templates).
 
 ## Quick start
 
 ```bash
-git clone https://github.com/wazootech/wiki-yasgui-template.git
-cd wiki-yasgui-template
+git clone https://github.com/wazootech/wiki-templates.git
+cd wiki-templates/yasgui
 pip install wazootech-wiki
 bash scripts/export-graph.sh
 ```
 
-Open `index.html` locally or use the [GitHub Pages demo](https://wazootech.github.io/wiki-yasgui-template/) after enabling Pages on this repo.
+Open `index.html` locally or use the [GitHub Pages demo](https://wazootech.github.io/wiki-templates/yasgui/) after enabling Pages on this repo.
 
 ## Three wiring modes
 

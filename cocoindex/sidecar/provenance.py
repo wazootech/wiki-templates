@@ -6,7 +6,7 @@ from pathlib import Path
 
 
 EMBEDDING_DIMENSIONS = 16
-DEFAULT_SOURCE_GRAPH = "https://wazootech.github.io/wiki-cocoindex-template/wiki/"
+DEFAULT_SOURCE_GRAPH = "https://wazootech.github.io/wiki-templates/cocoindex/wiki/"
 
 
 @dataclass(frozen=True)

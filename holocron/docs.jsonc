@@ -12,7 +12,7 @@
     "links": [
       {
         "type": "github",
-        "href": "https://github.com/wazootech/wiki-holocron-template"
+        "href": "https://github.com/wazootech/wiki-templates"
       }
     ],
     "primary": {
@@ -23,7 +23,7 @@
   },
   "footer": {
     "socials": {
-      "github": "https://github.com/wazootech/wiki-holocron-template"
+      "github": "https://github.com/wazootech/wiki-templates"
     }
   },
   "navigation": {
@@ -37,13 +37,13 @@
       "anchors": [
         {
           "anchor": "GitHub",
-          "href": "https://github.com/wazootech/wiki-holocron-template",
+          "href": "https://github.com/wazootech/wiki-templates",
           "icon": "github",
           "placement": "tabs"
         },
         {
           "anchor": "Changelog",
-          "href": "https://github.com/wazootech/wiki-holocron-template/releases",
+          "href": "https://github.com/wazootech/wiki-templates/releases",
           "icon": "newspaper",
           "placement": "tabs"
         }

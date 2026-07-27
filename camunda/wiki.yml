@@ -17,8 +17,8 @@ graph:
   context:
     "@vocab": https://schema.org/
     schema: https://schema.org/
-    wiki: https://wazootech.github.io/wiki-camunda-template/wiki/
-    camunda: https://wazootech.github.io/wiki-camunda-template/ns/camunda#
+    wiki: https://wazootech.github.io/wiki-templates/camunda/wiki/
+    camunda: https://wazootech.github.io/wiki-templates/camunda/ns/camunda#
     bpmn: https://www.omg.org/spec/BPMN/
     dmn: https://www.omg.org/spec/DMN/
     feel: https://docs.camunda.io/docs/components/modeler/feel/
