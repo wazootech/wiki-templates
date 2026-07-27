@@ -1,0 +1,13 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "type": "object",
+  "required": ["type", "headline", "camunda:decisionId", "camunda:owner", "camunda:reviewCadence"],
+  "properties": {
+    "type": { "const": "camunda:DmnDecision" },
+    "headline": { "type": "string" },
+    "camunda:decisionId": { "type": "string" },
+    "camunda:owner": { "type": "string" },
+    "camunda:reviewCadence": { "type": "string" }
+  },
+  "additionalProperties": true
+}

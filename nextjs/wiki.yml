@@ -1,0 +1,13 @@
+wiki:
+  inputs:
+    - wiki
+  filename_pattern: "[A-Za-z0-9_()-]+\\.md"
+
+graph:
+  content_predicate: schema:articleBody
+  context:
+    schema: https://schema.org/
+    wiki: https://wazootech.github.io/wiki-nextjs-template/wiki/
+lint:
+  broken_links: warning
+  filename_pattern: warning

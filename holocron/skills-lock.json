@@ -1,0 +1,11 @@
+{
+  "version": 1,
+  "skills": {
+    "holocron": {
+      "source": "remorses/holocron",
+      "sourceType": "github",
+      "skillPath": "skills/holocron/SKILL.md",
+      "computedHash": "c8c92ef4d025fc82f69e8623f27e168a932732df2b164b67d9fcc6be4c9dd4ea"
+    }
+  }
+}

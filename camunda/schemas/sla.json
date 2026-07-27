@@ -1,0 +1,12 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "type": "object",
+  "required": ["type", "headline", "camunda:targetDuration", "camunda:escalationOwner"],
+  "properties": {
+    "type": { "const": "camunda:SLA" },
+    "headline": { "type": "string" },
+    "camunda:targetDuration": { "type": "string" },
+    "camunda:escalationOwner": { "type": "string" }
+  },
+  "additionalProperties": true
+}

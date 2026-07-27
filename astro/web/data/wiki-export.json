@@ -1,0 +1,100 @@
+[
+  {
+    "name": "Alice_Chen.md",
+    "rdf": [
+      {
+        "@id": "https://wazootech.github.io/wiki-astro-template/wiki/Alice_Chen",
+        "@type": [
+          "https://schema.org/Person"
+        ],
+        "https://schema.org/articleBody": [
+          {
+            "@value": "# Alice Chen\n\nAlice maintains the sandbox sample vault and typed frontmatter examples.\n\n## Related\n\n- [SPARQL_Demo](SPARQL_Demo.md)"
+          }
+        ],
+        "https://schema.org/description": [
+          {
+            "@value": "Sample person page for SPARQL SELECT demos."
+          }
+        ],
+        "https://schema.org/familyName": [
+          {
+            "@value": "Chen"
+          }
+        ],
+        "https://schema.org/givenName": [
+          {
+            "@value": "Alice"
+          }
+        ],
+        "https://schema.org/headline": [
+          {
+            "@value": "Alice Chen"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "name": "Bob_Martinez.md",
+    "rdf": [
+      {
+        "@id": "https://wazootech.github.io/wiki-astro-template/wiki/Bob_Martinez",
+        "@type": [
+          "https://schema.org/Person"
+        ],
+        "https://schema.org/articleBody": [
+          {
+            "@value": "# Bob Martinez\n\nBob co-authored the demo queries bundled with this template.\n\n## Related\n\n- [Alice_Chen](Alice_Chen.md)\n- [SPARQL_Demo](SPARQL_Demo.md)"
+          }
+        ],
+        "https://schema.org/description": [
+          {
+            "@value": "Second sample person for multi-result SPARQL queries."
+          }
+        ],
+        "https://schema.org/familyName": [
+          {
+            "@value": "Martinez"
+          }
+        ],
+        "https://schema.org/givenName": [
+          {
+            "@value": "Bob"
+          }
+        ],
+        "https://schema.org/headline": [
+          {
+            "@value": "Bob Martinez"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "name": "SPARQL_Demo.md",
+    "rdf": [
+      {
+        "@id": "https://wazootech.github.io/wiki-astro-template/wiki/SPARQL_Demo",
+        "@type": [
+          "https://schema.org/TechArticle"
+        ],
+        "https://schema.org/articleBody": [
+          {
+            "@value": "# SPARQL demo\n\nUse this page as a typed `schema:TechArticle` target in filter queries.\n\n## Sample SELECT\n\n```sparql\nPREFIX schema: <https://schema.org/>\n\nSELECT ?person ?given ?family WHERE {\n  ?person a schema:Person .\n  ?person schema:givenName ?given .\n  ?person schema:familyName ?family .\n}\nORDER BY ?family\n```\n\n## Sample ASK\n\n```sparql\nPREFIX schema: <https://schema.org/>\n\nASK {\n  ?doc a schema:TechArticle .\n  ?doc schema:headline \"SPARQL demo\" .\n}\n```\n\n## Related\n\n- [Alice_Chen](Alice_Chen.md)\n- [Bob_Martinez](Bob_Martinez.md)"
+          }
+        ],
+        "https://schema.org/description": [
+          {
+            "@value": "Starter queries and wiring notes for the wiki-yasgui-template."
+          }
+        ],
+        "https://schema.org/headline": [
+          {
+            "@value": "SPARQL demo"
+          }
+        ]
+      }
+    ]
+  }
+]

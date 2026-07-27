@@ -1,0 +1,24 @@
+---
+import { listPages, findRdf } from "../lib/pages";
+
+export function getStaticPaths() {
+  return listPages().map((page) => ({
+    params: { slug: page.slug },
+    props: { name: page.name, slug: page.slug, rdf: findRdf(page.slug) },
+  }));
+}
+
+const { slug, name, rdf } = Astro.props;
+---
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>{slug}</title>
+  </head>
+  <body style="font-family: system-ui; margin: 2rem;">
+    <p><a href="/">← Index</a></p>
+    <h1>{slug.replace(/_/g, " ")}</h1>
+    <p>Source file: <code>{name}</code></p>
+    <pre style="background: #f4f4f5; padding: 1rem; overflow: auto;">{JSON.stringify(rdf, null, 2)}</pre>
+  </body>
+</html>

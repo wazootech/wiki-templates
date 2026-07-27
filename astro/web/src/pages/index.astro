@@ -1,0 +1,21 @@
+---
+import { listPages } from "../lib/pages";
+const pages = listPages();
+---
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>Wiki Astro viewer</title>
+  </head>
+  <body style="font-family: system-ui; margin: 2rem;">
+    <h1>Wiki Astro viewer</h1>
+    <p>Static routes generated from <code>wiki export</code> JSON-LD.</p>
+    <ul>
+      {pages.map((page) => (
+        <li>
+          <a href={`/${page.slug}`}>{page.slug}</a>
+        </li>
+      ))}
+    </ul>
+  </body>
+</html>

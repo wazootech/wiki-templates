@@ -1,0 +1,13 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "type": "object",
+  "required": ["type", "headline", "camunda:processId", "camunda:owner", "camunda:hasSLA"],
+  "properties": {
+    "type": { "const": "camunda:CamundaProcess" },
+    "headline": { "type": "string" },
+    "camunda:processId": { "type": "string" },
+    "camunda:owner": { "type": "string" },
+    "camunda:hasSLA": { "type": "string" }
+  },
+  "additionalProperties": true
+}

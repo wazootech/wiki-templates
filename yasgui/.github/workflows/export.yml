@@ -1,0 +1,40 @@
+name: Export graph
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - "sample/**"
+      - "scripts/export-graph.sh"
+      - ".github/workflows/export.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  export:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Install Wiki CLI
+        run: pip install wazootech-wiki
+
+      - name: Regenerate Turtle export
+        run: bash scripts/export-graph.sh
+
+      - name: Wiki check (sample vault)
+        run: wiki -c sample/wiki.yml check
+
+      - name: Commit updated vault.ttl
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add data/vault.ttl
+          if git diff --staged --quiet; then
+            echo "No TTL changes."
+          else
+            git commit -m "chore: regenerate data/vault.ttl"
+            git push
+          fi

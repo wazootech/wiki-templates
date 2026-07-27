@@ -1,0 +1,12 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "type": "object",
+  "required": ["type", "headline", "camunda:workerType", "camunda:implementedBy"],
+  "properties": {
+    "type": { "const": "camunda:JobWorker" },
+    "headline": { "type": "string" },
+    "camunda:workerType": { "type": "string" },
+    "camunda:implementedBy": { "type": "string" }
+  },
+  "additionalProperties": true
+}

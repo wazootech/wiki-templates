@@ -1,0 +1,7 @@
+dist/
+export.zip
+node_modules/
+.pytest_cache/
+__pycache__/
+.venv/
+.vercel

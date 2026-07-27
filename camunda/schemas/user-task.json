@@ -1,0 +1,13 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "type": "object",
+  "required": ["type", "headline", "camunda:taskId", "camunda:assignedRole", "camunda:usesForm"],
+  "properties": {
+    "type": { "const": "camunda:UserTask" },
+    "headline": { "type": "string" },
+    "camunda:taskId": { "type": "string" },
+    "camunda:assignedRole": { "type": "string" },
+    "camunda:usesForm": { "type": "string" }
+  },
+  "additionalProperties": true
+}

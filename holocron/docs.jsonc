@@ -1,0 +1,53 @@
+{
+  "$schema": "https://holocron.so/docs.json",
+  "name": "Wiki Docs",
+  "favicon": "/favicon.ico",
+  "colors": {
+    "primary": "#6366f1"
+  },
+  "icons": {
+    "library": "lucide"
+  },
+  "navbar": {
+    "links": [
+      {
+        "type": "github",
+        "href": "https://github.com/wazootech/wiki-holocron-template"
+      }
+    ],
+    "primary": {
+      "type": "button",
+      "label": "Wiki",
+      "href": "/ethan-davidson"
+    }
+  },
+  "footer": {
+    "socials": {
+      "github": "https://github.com/wazootech/wiki-holocron-template"
+    }
+  },
+  "navigation": {
+    "tabs": [
+      {
+        "tab": "Wiki",
+        "pages": ["Ethan_Davidson", "Person_Shape"]
+      }
+    ],
+    "global": {
+      "anchors": [
+        {
+          "anchor": "GitHub",
+          "href": "https://github.com/wazootech/wiki-holocron-template",
+          "icon": "github",
+          "placement": "tabs"
+        },
+        {
+          "anchor": "Changelog",
+          "href": "https://github.com/wazootech/wiki-holocron-template/releases",
+          "icon": "newspaper",
+          "placement": "tabs"
+        }
+      ]
+    }
+  }
+}

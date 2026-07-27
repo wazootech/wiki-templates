@@ -1,0 +1,38 @@
+name: CI
+
+on:
+  push:
+    branches: ["main", "master"]
+  pull_request:
+    branches: ["main", "master"]
+
+jobs:
+  wiki:
+    name: Wiki check + lint
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - run: pip install wazootech-wiki
+      - run: wiki check --strict -v
+      - run: wiki lint --strict -v
+
+  build:
+    runs-on: ubuntu-latest
+    needs: wiki
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+      - run: pip install wazootech-wiki
+      - run: bash scripts/export-wiki-data.sh
+      - run: npm install
+        working-directory: web
+      - run: npm run build
+        working-directory: web
