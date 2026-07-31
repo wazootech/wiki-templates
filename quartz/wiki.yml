@@ -8,7 +8,7 @@ graph:
   content_predicate: schema:articleBody
   context:
     schema: https://schema.org/
-    wiki: https://wazootech.github.io/wiki-quartz-template/content/
+    wiki: https://wazootech.github.io/wiki-templates/quartz/content/
 
 site:
   base_url: /

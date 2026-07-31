@@ -1,10 +1,10 @@
-# wiki-template
+# Generic Wiki Template
 
 Generic **Wiki CLI** workspace starter — `wiki init` parity plus GitHub Pages deploy.
 
-This is the privileged generic scaffold. For the Karpathy-pattern [LLM Wiki](https://github.com/wazootech/wiki/blob/main/docs/wiki/LLM_Wiki.md) vault (agent gardening, shapes, SPARQL indexes), use [`llm-wiki-template`](https://github.com/wazootech/llm-wiki-template) ([#83](https://github.com/wazootech/wiki/issues/83)).
+This is the privileged generic scaffold. For the Karpathy-pattern [LLM Wiki](https://github.com/wazootech/wiki/blob/main/docs/wiki/LLM_Wiki.md) vault (agent gardening, shapes, SPARQL indexes), use [`llm-wiki`](https://github.com/wazootech/wiki-templates/tree/main/llm-wiki) ([#83](https://github.com/wazootech/wiki/issues/83)).
 
-Full ecosystem registry: [Wiki CLI templates](https://github.com/wazootech/wiki/blob/main/docs/wiki/Wiki_CLI.md#ecosystem-templates).
+Full ecosystem registry: [Wiki CLI templates](https://github.com/wazootech/wiki/blob/main/docs/wiki/wiki.md#ecosystem-templates).
 
 ## Quick start
 

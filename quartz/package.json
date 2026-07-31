@@ -1,5 +1,5 @@
 {
-  "name": "wiki-quartz-template",
+  "name": "wiki-templates-quartz",
   "private": true,
   "scripts": {
     "quartz:build": "npx quartz build",

@@ -1,7 +1,7 @@
 ---
 type: TechArticle
 headline: SPARQL demo
-description: Starter queries and wiring notes for the wiki-yasgui-template.
+description: Starter queries and wiring notes for the yasgui template.
 ---
 
 # SPARQL demo
