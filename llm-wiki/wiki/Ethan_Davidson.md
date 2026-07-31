@@ -1,7 +1,7 @@
 ---
 type: schema:Person
-givenName: Ethan
-familyName: Davidson
+schema:givenName: Ethan
+schema:familyName: Davidson
 ---
 
 # Ethan Davidson

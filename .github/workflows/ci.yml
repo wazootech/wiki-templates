@@ -1,0 +1,41 @@
+name: CI
+
+on:
+  push:
+    branches: ["main"]
+  pull_request:
+    branches: ["main"]
+
+jobs:
+  validate:
+    name: Validate templates
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        template:
+          - astro
+          - camunda
+          - cocoindex
+          - generic
+          - holocron
+          - llm-wiki
+          - mintlify
+          - nextjs
+          - quartz
+          - wikipedia
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Install Wiki CLI
+        run: pip install wazootech-wiki
+
+      - name: Integrity audits
+        run: wiki -c "${{ matrix.template }}/wiki.yml" check --strict -v
+
+      - name: Convention audits
+        run: wiki -c "${{ matrix.template }}/wiki.yml" lint --strict -v
