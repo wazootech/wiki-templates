@@ -40,6 +40,10 @@ Each template should contain at minimum:
 - `README.md` — Setup instructions and template description
 - `.github/workflows/` — CI for wiki check/lint and optional deploy
 
+Templates with a `wiki.yml` must pass `wiki check --strict` and
+`wiki lint --strict`. The repository CI enforces this across all templates, so
+run both commands locally for your template before opening a PR.
+
 See `generic/` for the minimal structure.
 
 ## History

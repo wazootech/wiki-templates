@@ -1,9 +1,10 @@
-<!-- wiki tweak: replace with your first page -->
 ---
 type: schema:Person
-givenName: Ethan
-familyName: Davidson
+schema:givenName: Ethan
+schema:familyName: Davidson
 ---
+
+<!-- wiki tweak: replace with your first page -->
 
 # Ethan Davidson
 
