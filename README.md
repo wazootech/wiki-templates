@@ -19,6 +19,7 @@ Each subdirectory is a self-contained template you can clone and customize. See 
 | [nextjs](nextjs/) | Next.js App Router SSG consuming wiki export JSON-LD | TypeScript, Next.js |
 | [camunda](camunda/) | Camunda BPMN/DMN governance knowledge base | Markdown, SHACL, JSON Schema |
 | [cocoindex](cocoindex/) | CocoIndex incremental memory sidecar with pgvector | Python, Docker, pgvector |
+| [workspace-cli](workspace-cli/) | Composed workspace of independently-owned sub-wiki repos with named-graph provenance | Markdown, SHACL, bash |
 
 ## Quick start
 
