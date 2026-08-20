@@ -1,0 +1,21 @@
+{
+  "schemaVersion": 1,
+  "repositoriesDirectory": "repos",
+  "worktreesDirectory": "worktrees",
+  "vaultDirectory": "secrets",
+  "repositories": [
+    {
+      "name": "workspace-cli-umbrella",
+      "url": "https://github.com/acme/workspace-cli-umbrella.git",
+      "path": "."
+    },
+    {
+      "name": "alpha-brain",
+      "url": "https://github.com/acme/alpha-brain.git"
+    },
+    {
+      "name": "beta-brain",
+      "url": "https://github.com/acme/beta-brain.git"
+    }
+  ]
+}

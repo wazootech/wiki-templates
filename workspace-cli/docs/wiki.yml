@@ -1,0 +1,83 @@
+# Wiki paths, assets, and filename policy (wiki check / wiki lint).
+wiki:
+  # Markdown and data directories to index (relative to this file).
+  inputs:
+    - wiki
+    - shapes
+  # Static files for custom CSS, logos, favicons (copied on wiki build).
+  assets:
+    - assets
+  # Full-filename regex for markdown files (lint.filename_pattern severity).
+  filename_pattern: "[A-Za-z0-9_()-]+\\.md"
+
+# RDF document URIs, prefixes, and graph build settings.
+graph:
+  content_predicate: schema:articleBody
+  # CURIE prefix map for frontmatter and microdata.
+  context:
+    "@vocab": https://schema.org/
+    schema: https://schema.org/
+    wiki: https://wazootech.github.io/wiki-templates/workspace-cli/docs/wiki/
+    wspace: https://wazootech.github.io/wiki-templates/workspace-cli/ns/wspace#
+    wazoo: https://schema.wazoo.dev/
+    foaf: http://xmlns.com/foaf/0.1/
+    dc: http://purl.org/dc/elements/1.1/
+    dcterms: http://purl.org/dc/terms/
+    rdfs: http://www.w3.org/2000/01/rdf-schema#
+    sh: http://www.w3.org/ns/shacl#
+    xsd: http://www.w3.org/2001/XMLSchema#
+
+# Recursive semantic dataset composition.
+# Composing sub-wikis is the point of this template — activate the block and
+# run `wiki install` to pull independently-owned sub-wiki repos into one
+# umbrella graph with named-graph provenance.
+#
+# ```yaml
+# sources:
+#   - name: finance-brain
+#     type: git
+#     url: https://github.com/acme/finance-brain.git
+#     ref: main
+#     path: wiki
+#   - name: research-brain
+#     type: git
+#     url: https://github.com/acme/research-brain.git
+#     ref: main
+#     path: wiki
+# ```
+
+# Page layout and URL routing.
+site:
+  # Default page layout Jinja template.
+  layout: layouts/default.html.j2
+  # URL prefix for built and served pages.
+  base_url: /workspace-cli
+  # dir -> slug/index.html; file -> slug.html
+  url_style: dir
+
+# Wiki link command output format.
+link:
+  # standard page links or wikilinks (wiki link --apply).
+  style: standard
+
+# Integrity severities (wiki check): SHACL, JSON Schema, routes, layout files.
+check:
+  missing_layout_file: error
+  frontmatter_schema: error
+  missing_schema_ref: error
+
+# Convention severities (wiki lint): links, filenames, headings.
+lint:
+  broken_links: warning
+  filename_pattern: warning
+  headings: off
+  heading_levels: off
+  duplicate_headings: off
+  thematic_breaks: off
+  link_style: warning
+
+# Markdown formatting options (wiki fmt).
+fmt:
+  wrap: "no"
+  end_of_line: lf
+  extensions: [gfm, front_matters, wikilink, toc, footnote]

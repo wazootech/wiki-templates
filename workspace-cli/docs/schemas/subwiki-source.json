@@ -1,0 +1,14 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Subwiki Source",
+  "type": "object",
+  "properties": {
+    "type": { "const": "wspace:SubwikiSource" },
+    "headline": { "type": "string" },
+    "description": { "type": "string" },
+    "wspace:sourceRepo": { "type": "string" },
+    "wspace:sourceRef": { "type": "string" },
+    "wspace:sourcePath": { "type": "string" }
+  },
+  "required": ["type", "headline", "wspace:sourceRepo", "wspace:sourceRef", "wspace:sourcePath"]
+}

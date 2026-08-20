@@ -1,0 +1,14 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Workspace Decision",
+  "type": "object",
+  "properties": {
+    "type": { "const": "wspace:WorkspaceDecision" },
+    "headline": { "type": "string" },
+    "description": { "type": "string" },
+    "wspace:status": { "type": "string" },
+    "wspace:decisionOwner": { "type": "string" },
+    "wspace:decisionDate": { "type": "string" }
+  },
+  "required": ["type", "headline", "wspace:status", "wspace:decisionOwner", "wspace:decisionDate"]
+}

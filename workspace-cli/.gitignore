@@ -1,0 +1,10 @@
+# Build outputs
+_site/
+
+# Wiki CLI graph and render caches
+.wiki/
+
+# Python
+__pycache__/
+*.py[cod]
+.venv/

@@ -1,0 +1,35 @@
+# Wiki paths, assets, and filename policy (wiki check / wiki lint).
+wiki:
+  # Markdown and data directories to index (relative to this file).
+  inputs:
+    - wiki
+  filename_pattern: "[A-Za-z0-9_()-]+\\.md"
+
+# RDF document URIs, prefixes, and graph build settings.
+graph:
+  content_predicate: schema:articleBody
+  context:
+    "@vocab": https://schema.org/
+    schema: https://schema.org/
+    wazoo: https://schema.wazoo.dev/
+    sh: http://www.w3.org/ns/shacl#
+    xsd: http://www.w3.org/2001/XMLSchema#
+
+check:
+  missing_layout_file: error
+  frontmatter_schema: error
+  missing_schema_ref: error
+
+lint:
+  broken_links: warning
+  filename_pattern: warning
+  headings: off
+  heading_levels: off
+  duplicate_headings: off
+  thematic_breaks: off
+  link_style: warning
+
+fmt:
+  wrap: "no"
+  end_of_line: lf
+  extensions: [gfm, front_matters, wikilink, toc, footnote]

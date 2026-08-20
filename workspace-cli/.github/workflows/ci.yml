@@ -1,0 +1,52 @@
+name: CI
+
+on:
+  push:
+    branches: ["main"]
+  pull_request:
+    branches: ["main"]
+
+jobs:
+  wiki:
+    name: Validate wiki
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Install Wiki CLI
+        run: pip install wazootech-wiki
+
+      - name: Format check
+        run: wiki -c docs/wiki.yml fmt --check
+
+      - name: Integrity audits
+        run: wiki -c docs/wiki.yml check --strict -v
+
+      - name: Convention audits
+        run: wiki -c docs/wiki.yml lint --strict -v
+
+      - name: Render check
+        run: wiki -c docs/wiki.yml render --check
+
+      - name: Build static site
+        run: wiki -c docs/wiki.yml build --output-dir _site --site-base-url /workspace-cli
+
+  compose-demo:
+    name: Composition smoke test
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Install Wiki CLI
+        run: pip install wazootech-wiki
+
+      - name: Run compose demo
+        run: bash scripts/compose-demo.sh
