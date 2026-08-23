@@ -1,3 +1,10 @@
+<!-- template-payload: ships with this template; scaffolds into generated docs sites -->
+
+This file is **template payload**: inside `wazootech/wiki-templates` it marks
+shipped content; in every site scaffolded from this template it serves as live
+agent instructions. First-party agents editing the template itself should load
+the governing skill or reference before changing template internals.
+
 # Agent instructions (LLM Wiki vault)
 
 This repository follows the [LLM Wiki](https://github.com/wazootech/wiki/blob/main/docs/wiki/LLM_Wiki.md) pattern.
