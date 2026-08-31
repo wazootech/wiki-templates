@@ -53,6 +53,15 @@ bash scripts/validate-all.sh
 
 See `generic/` for the minimal structure.
 
-## History
+## Why a monorepo?
 
-These templates were consolidated from 11 individual repos into this monorepo to reduce clutter in the [wazootech](https://github.com/wazootech) organization. The original repos are archived with redirect notices.
+Templates live in subdirectories of this repo rather than as separate `wazootech/wiki-<name>-template` repos. The tradeoffs:
+
+- **Discoverability** — all templates are visible in one place; users can browse and compare without knowing repo names in advance.
+- **Shared CI** — a single workflow runs `wiki fmt/lint/check/render` across every template, so a upstream Wiki CLI change that breaks a template is caught in one PR.
+- **Atomic cross-template changes** — updates to shared conventions (lint rules, SHACL patterns, deploy workflows) land in one commit.
+- **Lower maintenance overhead** — one repo to configure, one issue tracker, one set of branch protections.
+
+The cost is that `wiki init --template` must shallow-clone the entire monorepo to copy one subdirectory. In practice this is fast (`--depth 1`) and a single network round-trip. If this ever becomes a concern, the GitHub Contents API could fetch individual template files without a full clone.
+
+The original individual repos were consolidated to reduce clutter in the [wazootech](https://github.com/wazootech) organization.
