@@ -2,7 +2,7 @@
 # Wiki paths, assets, and filename policy (wiki check / wiki lint).
 wiki:
   # Markdown and data directories to index (relative to this file).
-  inputs:
+  input:
     - src
   # assets: [public]     # unused — site is served by Vite/Holocron, not wiki build/serve
   # Full-filename regex for markdown files (lint.filename_pattern severity).

@@ -26,7 +26,7 @@ wiki serve --watch
 
 ## Workspace layout
 
-- `wiki.yaml` — config root (`wiki.inputs`, `graph.*`, `site.*`)
+- `wiki.yaml` — config root (`wiki.input`, `graph.*`, `site.*`)
 - `wiki/` — markdown vault with semantic frontmatter
 - `layouts/` — Jinja page templates
 - `assets/` — static files copied on `wiki build`

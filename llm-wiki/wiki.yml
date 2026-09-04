@@ -1,6 +1,6 @@
 # Wiki paths, assets, and filename policy (wiki check / wiki lint).
 wiki:
-  inputs:
+  input:
     - wiki
   assets:
     - assets

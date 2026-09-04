@@ -18,7 +18,7 @@ npx quartz build --serve
 | Path | Role |
 | ---- | ---- |
 | `content/` | Markdown vault (Quartz content root) |
-| `wiki.yaml` | Wiki CLI config (`wiki.inputs: [content]`) |
+| `wiki.yaml` | Wiki CLI config (`wiki.input: [content]`) |
 | `quartz.config.ts` | Quartz site configuration |
 
 ## CI
