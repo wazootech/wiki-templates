@@ -18,7 +18,7 @@ Place this at your project root:
 
 ```yaml
 wiki:
-  inputs:
+  input:
     - wiki
   assets:
     - assets

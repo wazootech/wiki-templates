@@ -1,7 +1,7 @@
 # Wiki paths, assets, and filename policy (wiki check / wiki lint).
 wiki:
   # Markdown and data directories to index (relative to this file).
-  inputs:
+  input:
     - wiki
   filename_pattern: "[A-Za-z0-9_()-]+\\.md"
 

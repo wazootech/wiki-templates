@@ -18,7 +18,7 @@ jobs:
           python-version: "3.12"
 
       - name: Install Wiki CLI
-        run: pip install wazootech-wiki==0.1.21
+        run: pip install wazootech-wiki==0.1.23
 
       - name: Validate all templates
         run: bash scripts/validate-all.sh

@@ -29,7 +29,7 @@ wiki -c wiki.yml serve --watch
 
 ## Workspace layout
 
-- `wiki.yml` - config root (`wiki.inputs`, `graph.*`, `site.*`)
+- `wiki.yml` - config root (`wiki.input`, `graph.*`, `site.*`)
 - `wiki/` - Camunda process, decision, worker, and governance pages
 - `shapes/` - SHACL shapes and optional JSON Schema bindings
 - `layouts/` - Jinja page templates

@@ -1,6 +1,6 @@
 # Wiki CLI vault for Quartz publishing (content/ is the Quartz source tree).
 wiki:
-  inputs:
+  input:
     - content
   filename_pattern: "[A-Za-z0-9_()-]+\\.md"
 
