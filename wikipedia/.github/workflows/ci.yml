@@ -15,6 +15,10 @@ jobs:
       - uses: actions/setup-python@v5
         with:
           python-version: "3.12"
-      - run: pip install wazootech-wiki
-      - run: wiki check --strict -v
-      - run: wiki lint --strict -v
+      - run: pip install wazootech-wiki==0.1.23
+      - name: Check formatting
+        run: wiki -c wiki.yml fmt --check
+      - name: Check wiki integrity
+        run: wiki -c wiki.yml check --strict -v
+      - name: Lint wiki conventions
+        run: wiki -c wiki.yml lint --strict -v

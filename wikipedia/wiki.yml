@@ -15,13 +15,15 @@ wiki:
 
 # RDF document URIs, prefixes, and graph build settings.
 graph:
-  # content_predicate: schema:articleBody
+  # Predicate for full-text body literals in SPARQL (for example schema:articleBody).
+  content_predicate: schema:articleBody
   # include_file_extension: false
   # implicit_types: [schema:TechArticle]
   # implicit_types_policy: fallback
   # base_iri: https://example.org/docs/  # optional override; defaults to context.wiki
   # CURIE prefix map for frontmatter and microdata.
   context:
+    "@vocab": https://schema.org/
     schema: https://schema.org/
     wiki: https://wazootech.github.io/wiki-templates/wikipedia/
     wazoo: https://schema.wazoo.dev/
@@ -51,11 +53,11 @@ check:
 # Convention severities (wiki lint): links, filenames, headings.
 lint:
   # Wikilinks, markdown links, fragments, assets, wiki: CURIEs.
-  broken_links: warning
+  broken_links: error
   # Wiki filename_pattern regex (see wiki.filename_pattern).
-  filename_pattern: warning
+  filename_pattern: error
   # Wikilinks in body when link.style is standard.
-  link_style: warning
+  link_style: error
 
 # Optional SPARQL HTTP endpoint on wiki serve (opt-in).
 # sparql_service:
@@ -69,7 +71,7 @@ fmt:
   # Line ending style (lf or crlf).
   end_of_line: lf
   # mdformat extensions enabled for wiki markdown.
-  extensions: [gfm, frontmatter, wikilink]
+  extensions: [gfm, front_matters, wikilink, toc, footnote]
 
 # Pointer mode (optional TOML file relative to this file):
 # fmt: .mdformat.toml

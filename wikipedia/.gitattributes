@@ -1,0 +1,4 @@
+# Enforce LF line endings for all text files, on every platform.
+# wiki fmt emits and expects LF (wiki.yml fmt.end_of_line); working trees
+# must never silently flip committed files to CRLF on Windows checkouts.
+* text=auto eol=lf
