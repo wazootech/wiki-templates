@@ -106,7 +106,6 @@ Copy `.github/workflows/ci.yml` from this repo to run `wiki fmt --check`, `wiki 
 - `assets/` — Static assets (CSS, JS, logo) for the Wikipedia theme.
 - `layouts/` — Token-based layout template for the Wikipedia theme.
 - `build.py` — Build script using the Wiki Python library.
-- `opencode.json` + `.opencode/` — Agent instructions, commands, and a read-only wiki reviewer subagent.
 - `queries/` — Saved SPARQL queries for recurring questions.
 - `.gitattributes` — Forces LF line endings so `wiki fmt` results are stable on every platform.
 
