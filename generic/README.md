@@ -22,11 +22,14 @@ wiki check --strict
 wiki serve --watch
 ```
 
+This template's `.github/workflows/ci.yml` is the canonical gate workflow for
+the monorepo — copy it as-is, or diff your own against it.
+
 4. Enable **Settings → Pages → Source: GitHub Actions** so the deploy workflow can publish `wiki build` output.
 
 ## Workspace layout
 
-- `wiki.yaml` — config root (`wiki.input`, `graph.*`, `site.*`)
+- `wiki.yml` — config root (`wiki.input`, `graph.*`, `site.*`)
 - `wiki/` — markdown vault with semantic frontmatter
 - `layouts/` — Jinja page templates
 - `assets/` — static files copied on `wiki build`
