@@ -25,9 +25,13 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: "20"
-      - run: pip install wazootech-wiki
-      - run: wiki check --strict -v
-      - run: wiki lint --strict -v
+      - name: Install Wiki CLI
+        # Pinned to the version the wiki-templates root workflow uses; bumps are deliberate.
+        run: pip install wazootech-wiki==0.1.23
+      - name: Check wiki integrity
+        run: wiki -c wiki.yml check --strict -v
+      - name: Lint wiki conventions
+        run: wiki -c wiki.yml lint --strict -v
       - run: bash scripts/export-wiki-data.sh
       - run: npm install
         working-directory: web

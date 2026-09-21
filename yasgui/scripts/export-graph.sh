@@ -5,7 +5,7 @@
 set -euo pipefail
 
 ROOT="$(cd "$(dirname "$0")/.." && pwd)"
-CONFIG="${ROOT}/sample/wiki.yaml"
+CONFIG="${ROOT}/sample/wiki.yml"
 OUT="${ROOT}/data/vault.ttl"
 
 mkdir -p "$(dirname "${OUT}")"

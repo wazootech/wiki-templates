@@ -29,6 +29,7 @@ jobs:
           restore-keys: |
             ${{ runner.os }}-pip-
       - name: Install dependencies
+        # Pinned to the version the wiki-templates root workflow uses; bumps are deliberate.
         run: pip install wazootech-wiki==0.1.23 pygments
       - name: Build site
         run: python build.py
