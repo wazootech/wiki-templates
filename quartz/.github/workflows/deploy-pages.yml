@@ -22,10 +22,15 @@ jobs:
       - uses: actions/setup-python@v5
         with:
           python-version: "3.12"
-      - run: pip install wazootech-wiki
-      - run: wiki check --strict -v
-      - run: wiki lint --strict -v
-      - run: wiki build --output-dir _site --site-base-url /
+      - name: Install Wiki CLI
+        # Pinned to the version the wiki-templates root workflow uses; bumps are deliberate.
+        run: pip install wazootech-wiki==0.1.23
+      - name: Check wiki integrity
+        run: wiki -c wiki.yml check --strict -v
+      - name: Lint wiki conventions
+        run: wiki -c wiki.yml lint --strict -v
+      - name: Build static site
+        run: wiki -c wiki.yml build --output-dir _site --site-base-url /
       - uses: actions/upload-pages-artifact@v3
         with:
           path: _site

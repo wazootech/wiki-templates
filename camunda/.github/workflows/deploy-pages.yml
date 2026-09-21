@@ -28,7 +28,8 @@ jobs:
           python-version: "3.12"
 
       - name: Install Wiki CLI
-        run: pip install wazootech-wiki
+        # Pinned to the version the wiki-templates root workflow uses; bumps are deliberate.
+        run: pip install wazootech-wiki==0.1.23
 
       - name: Format check
         run: wiki -c wiki.yml fmt --check
