@@ -2,7 +2,7 @@
 
 Usage: python build.py [--output-dir _site]
 
-Depends on wazootech-wiki==0.1.16 as a library.
+Depends on wazootech-wiki==0.1.23 as a library.
 """
 
 from __future__ import annotations
@@ -226,7 +226,7 @@ def _type_label(page: VirtualPage) -> str:
 def _build_metadata_panel_html(page: VirtualPage, site: WikiSite, selected_view: str) -> str:
     if not page.frontmatter:
         return ""
-    page_config = site.config or Config.for_root(Path.cwd(), wiki={"inputs": []})
+    page_config = site.config or Config.for_root(Path.cwd(), wiki={"input": []})
     view_group_id = _metadata_view_dom_id(page)
     radios_and_labels: list[str] = []
     panels: list[str] = []

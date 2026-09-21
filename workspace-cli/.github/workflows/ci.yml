@@ -18,19 +18,20 @@ jobs:
           python-version: "3.12"
 
       - name: Install Wiki CLI
-        run: pip install wazootech-wiki
+        # Pinned to the version the wiki-templates root workflow uses; bumps are deliberate.
+        run: pip install wazootech-wiki==0.1.23
 
-      - name: Format check
+      - name: Check formatting
         run: wiki -c docs/wiki.yml fmt --check
 
-      - name: Integrity audits
+      - name: Check wiki integrity
         run: wiki -c docs/wiki.yml check --strict -v
 
-      - name: Convention audits
+      - name: Lint wiki conventions
         run: wiki -c docs/wiki.yml lint --strict -v
 
-      - name: Render check
-        run: wiki -c docs/wiki.yml render --check
+      - name: Check rendered SPARQL blocks
+        run: wiki -c docs/wiki.yml render --check -v
 
       - name: Build static site
         run: wiki -c docs/wiki.yml build --output-dir _site --site-base-url /workspace-cli
@@ -46,7 +47,8 @@ jobs:
           python-version: "3.12"
 
       - name: Install Wiki CLI
-        run: pip install wazootech-wiki
+        # Pinned to the version the wiki-templates root workflow uses; bumps are deliberate.
+        run: pip install wazootech-wiki==0.1.23
 
       - name: Run compose demo
         run: bash scripts/compose-demo.sh

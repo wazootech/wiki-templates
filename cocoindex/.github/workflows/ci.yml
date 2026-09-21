@@ -18,16 +18,21 @@ jobs:
           python-version: "3.12"
 
       - name: Install dependencies
-        run: pip install -r requirements.txt
+        # The explicit pin wins over the unpinned wazootech-wiki in requirements.txt:
+        # pinned to the version the wiki-templates root workflow uses; bumps are deliberate.
+        run: pip install -r requirements.txt "wazootech-wiki==0.1.23"
 
-      - name: Format check
+      - name: Check formatting
         run: wiki -c wiki.yml fmt --check
 
-      - name: Convention audits
+      - name: Check wiki integrity
+        run: wiki -c wiki.yml check --strict -v
+
+      - name: Lint wiki conventions
         run: wiki -c wiki.yml lint --strict -v
 
-      - name: Integrity audits
-        run: wiki -c wiki.yml check --strict -v
+      - name: Check rendered SPARQL blocks
+        run: wiki -c wiki.yml render --check -v
 
       - name: Build manifest
         run: python scripts/build_manifest.py
@@ -46,8 +51,9 @@ jobs:
           python-version: "3.12"
 
       - name: Install dependencies
+        # Explicit pin; bumps are deliberate (matches the wiki-templates root workflow).
         run: |
-          pip install -r requirements.txt
+          pip install -r requirements.txt "wazootech-wiki==0.1.23"
           pip install -r requirements-pglite.txt
 
       - name: Build manifest

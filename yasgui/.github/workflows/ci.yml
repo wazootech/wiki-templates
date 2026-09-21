@@ -8,7 +8,7 @@ on:
 
 jobs:
   wiki:
-    name: Validate wiki
+    name: Validate sample wiki
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
@@ -22,13 +22,13 @@ jobs:
         run: pip install wazootech-wiki==0.1.23
 
       - name: Check formatting
-        run: wiki -c wiki.yml fmt --check
+        run: wiki -c sample/wiki.yml fmt --check
 
       - name: Check wiki integrity
-        run: wiki -c wiki.yml check --strict -v
+        run: wiki -c sample/wiki.yml check --strict -v
 
       - name: Lint wiki conventions
-        run: wiki -c wiki.yml lint --strict -v
+        run: wiki -c sample/wiki.yml lint --strict -v
 
       - name: Check rendered SPARQL blocks
-        run: wiki -c wiki.yml render --check -v
+        run: wiki -c sample/wiki.yml render --check -v

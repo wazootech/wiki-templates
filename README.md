@@ -39,10 +39,13 @@ Each template should contain at minimum:
 - `wiki.yml` — Wiki CLI configuration
 - `wiki/` — Sample markdown pages with semantic frontmatter
 - `README.md` — Setup instructions and template description
-- `.github/workflows/` — CI for wiki check/lint and optional deploy
+- `.github/workflows/` — CI for the four wiki gates and optional deploy
 
 Templates must pass all four wiki gates: `wiki fmt --check`, `wiki lint --strict`,
-`wiki check --strict`, and `wiki render --check`. The repository CI auto-discovers
+`wiki check --strict`, and `wiki render --check`. Each template's own
+`.github/workflows/ci.yml` mirrors those four steps with an explicit `-c <config>`
+and a pinned Wiki CLI; [`generic/.github/workflows/ci.yml`](generic/.github/workflows/ci.yml)
+is the canonical copy to diff yours against. The repository CI auto-discovers
 template configs (`wiki.yml`, `docs/wiki.yml`, or `sample/wiki.yml` per template)
 and runs all gates across every template, so run the same loop locally before
 opening a PR:

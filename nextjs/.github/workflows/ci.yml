@@ -11,16 +11,30 @@ permissions:
 
 jobs:
   wiki:
-    name: Wiki check + lint
+    name: Validate wiki
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
+
       - uses: actions/setup-python@v5
         with:
           python-version: "3.12"
-      - run: pip install wazootech-wiki
-      - run: wiki check --strict -v
-      - run: wiki lint --strict -v
+
+      - name: Install Wiki CLI
+        # Pinned to the version the wiki-templates root workflow uses; bumps are deliberate.
+        run: pip install wazootech-wiki==0.1.23
+
+      - name: Check formatting
+        run: wiki -c wiki.yml fmt --check
+
+      - name: Check wiki integrity
+        run: wiki -c wiki.yml check --strict -v
+
+      - name: Lint wiki conventions
+        run: wiki -c wiki.yml lint --strict -v
+
+      - name: Check rendered SPARQL blocks
+        run: wiki -c wiki.yml render --check -v
 
   build:
     name: Build Next.js
@@ -28,14 +42,21 @@ jobs:
     needs: wiki
     steps:
       - uses: actions/checkout@v4
+
       - uses: actions/setup-python@v5
         with:
           python-version: "3.12"
+
       - uses: actions/setup-node@v4
         with:
           node-version: "20"
-      - run: pip install wazootech-wiki
+
+      - name: Install Wiki CLI
+        # Pinned to the version the wiki-templates root workflow uses; bumps are deliberate.
+        run: pip install wazootech-wiki==0.1.23
+
       - run: npm ci
         working-directory: web
+
       - run: npm run build
         working-directory: web
