@@ -43,6 +43,9 @@ config, and the `build.py` Python site builder.
 - ATX `#` headings only (no Setext underlines).
 - Title case for H1, sentence case for H2+.
 - Standard Markdown links (`[Team](wiki/Team.md)`); no Obsidian-style wikilinks.
+- Keep author-facing notes in YAML frontmatter comments (`# ...`), not HTML
+  comments in the page body: the renderer escapes raw HTML, so `<!-- ... -->`
+  shows up as visible text on the built page.
 - No decorative emoji in headings or operating docs.
 - Semantic frontmatter required on all wiki pages.
 - `wiki fmt` enforces most formatting; run it before committing.
