@@ -1,3 +1,9 @@
+# Canonical template workflow.
+#
+# This file is the reference for the four wiki gates every template must pass.
+# The root README ("Templates must pass all four wiki gates") points here, and
+# scripts/validate-all.sh runs the same four commands across the monorepo.
+# Keep it in sync when the gate list changes; copy it into your own project as-is.
 name: CI
 
 on:
@@ -18,10 +24,17 @@ jobs:
           python-version: "3.12"
 
       - name: Install Wiki CLI
-        run: pip install wazootech-wiki
+        # Pinned to the version the wiki-templates root workflow uses; bumps are deliberate.
+        run: pip install wazootech-wiki==0.1.23
 
-      - name: Integrity audits
-        run: wiki check --strict -v
+      - name: Check formatting
+        run: wiki -c wiki.yml fmt --check
 
-      - name: Convention audits
-        run: wiki lint --strict -v
+      - name: Check wiki integrity
+        run: wiki -c wiki.yml check --strict -v
+
+      - name: Lint wiki conventions
+        run: wiki -c wiki.yml lint --strict -v
+
+      - name: Check rendered SPARQL blocks
+        run: wiki -c wiki.yml render --check -v
