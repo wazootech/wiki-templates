@@ -2,9 +2,11 @@
 
 Saved query inventories make this wiki operational, not just readable. Run them from the repo root with `wiki query`.
 
-```powershell
-Get-Content queries/pages-by-type.sparql -Raw | wiki query
+```bash
+wiki query < queries/pages-by-type.sparql
 ```
+
+On Windows PowerShell the equivalent is `Get-Content queries/pages-by-type.sparql -Raw | wiki query`.
 
 Prefixes such as `schema:`, `wiki:`, `wazoo:`, `sh:`, and `xsd:` come from `wiki.yml`; do not add duplicate `PREFIX` lines unless querying outside the Wiki CLI.
 

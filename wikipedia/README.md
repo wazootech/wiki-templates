@@ -97,7 +97,7 @@ Output goes to `_site/`. The built pages land under a folder matching your `site
 
 ### 6. (Optional) Add CI checks
 
-Copy `.github/workflows/ci.yml` from this repo to run `wiki fmt --check`, `wiki check`, and `wiki lint` on every push.
+Copy `.github/workflows/ci.yml` from this repo to run `wiki fmt --check`, `wiki check --strict`, `wiki lint --strict`, and `wiki render --check` on every push.
 
 ## Layout
 

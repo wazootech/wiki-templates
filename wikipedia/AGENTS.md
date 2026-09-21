@@ -58,5 +58,6 @@ After meaningful edits, run:
 - `wiki -c wiki.yml fmt --check`
 - `wiki -c wiki.yml lint --strict`
 - `wiki -c wiki.yml check --strict`
+- `wiki -c wiki.yml render --check` (embedded SPARQL blocks still current)
 - `python build.py --output-dir _site` (confirm no raw `%wiki.*%` tokens in the
   built HTML)

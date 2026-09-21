@@ -22,3 +22,5 @@ jobs:
         run: wiki -c wiki.yml check --strict -v
       - name: Lint wiki conventions
         run: wiki -c wiki.yml lint --strict -v
+      - name: Check rendered SPARQL blocks
+        run: wiki -c wiki.yml render --check -v
