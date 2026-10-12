@@ -2,31 +2,31 @@
 
 Starter templates for [Wiki CLI](https://github.com/wazootech/wiki) — vault scaffolds, publish integrations, and framework starters.
 
-Each subdirectory is a self-contained template you can clone and customize. See the individual READMEs for setup instructions.
+Each directory under `templates/` is a self-contained template you can clone and customize. See the individual READMEs for setup instructions.
 
 ## Templates
 
 | Template | Description | Stack |
 |----------|-------------|-------|
-| [generic](generic/) | Minimal Wiki CLI starter — equivalent to `wiki init` output with GitHub Pages deploy | Python, Jinja2 |
-| [quartz](quartz/) | Quartz publish integration for wiki vaults | TypeScript, Quartz |
-| [llm-wiki](llm-wiki/) | LLM Wiki pattern starter — agent gardening, SHACL shapes, SPARQL indexes | Python, Jinja2 |
-| [yasgui](yasgui/) | YASGUI SPARQL explorer for browsing wiki graph data | HTML, shell |
-| [wikipedia](wikipedia/) | Wikipedia-themed static site builder using Wiki Python API | Python, Jinja2 |
-| [mintlify](mintlify/) | Mintlify docs site from a Wiki CLI vault | TypeScript, Mintlify |
-| [holocron](holocron/) | Holocron docs site from a Wiki CLI vault | TypeScript, Vite |
-| [astro](astro/) | Astro SSG consuming wiki export JSON-LD | TypeScript, Astro |
-| [nextjs](nextjs/) | Next.js App Router SSG consuming wiki export JSON-LD | TypeScript, Next.js |
-| [camunda](camunda/) | Camunda BPMN/DMN governance knowledge base | Markdown, SHACL, JSON Schema |
-| [cocoindex](cocoindex/) | CocoIndex incremental memory sidecar with pgvector | Python, Docker, pgvector |
-| [workspace-cli](workspace-cli/) | Composed workspace of independently-owned sub-wiki repos with named-graph provenance | Markdown, SHACL, bash |
+| [generic](templates/generic/) | Minimal Wiki CLI starter — equivalent to `wiki init` output with GitHub Pages deploy | Python, Jinja2 |
+| [quartz](templates/quartz/) | Quartz publish integration for wiki vaults | TypeScript, Quartz |
+| [llm-wiki](templates/llm-wiki/) | LLM Wiki pattern starter — agent gardening, SHACL shapes, SPARQL indexes | Python, Jinja2 |
+| [yasgui](templates/yasgui/) | YASGUI SPARQL explorer for browsing wiki graph data | HTML, shell |
+| [wikipedia](templates/wikipedia/) | Wikipedia-themed static site builder using Wiki Python API | Python, Jinja2 |
+| [mintlify](templates/mintlify/) | Mintlify docs site from a Wiki CLI vault | TypeScript, Mintlify |
+| [holocron](templates/holocron/) | Holocron docs site from a Wiki CLI vault | TypeScript, Vite |
+| [astro](templates/astro/) | Astro SSG consuming wiki export JSON-LD | TypeScript, Astro |
+| [nextjs](templates/nextjs/) | Next.js App Router SSG consuming wiki export JSON-LD | TypeScript, Next.js |
+| [camunda](templates/camunda/) | Camunda BPMN/DMN governance knowledge base | Markdown, SHACL, JSON Schema |
+| [cocoindex](templates/cocoindex/) | CocoIndex incremental memory sidecar with pgvector | Python, Docker, pgvector |
+| [workspace-cli](templates/workspace-cli/) | Composed workspace of independently-owned sub-wiki repos with named-graph provenance | Markdown, SHACL, bash |
 
 ## Quick start
 
 ```bash
 # Clone a template
 git clone https://github.com/wazootech/wiki-templates.git
-cd wiki-templates/<template>
+cd wiki-templates/templates/<template>
 
 # Follow the template's README for setup
 cat README.md
@@ -44,7 +44,7 @@ Each template should contain at minimum:
 Templates must pass all four wiki gates: `wiki fmt --check`, `wiki lint --strict`,
 `wiki check --strict`, and `wiki render --check`. Each template's own
 `.github/workflows/ci.yml` mirrors those four steps with an explicit `-c <config>`
-and a pinned Wiki CLI; [`generic/.github/workflows/ci.yml`](generic/.github/workflows/ci.yml)
+and a pinned Wiki CLI; [`templates/generic/.github/workflows/ci.yml`](templates/generic/.github/workflows/ci.yml)
 is the canonical copy to diff yours against. The repository CI auto-discovers
 template configs (`wiki.yml`, `docs/wiki.yml`, or `sample/wiki.yml` per template)
 and runs all gates across every template, so run the same loop locally before
@@ -54,7 +54,7 @@ opening a PR:
 bash scripts/validate-all.sh
 ```
 
-See `generic/` for the minimal structure.
+See `templates/generic/` for the minimal structure.
 
 ## Why a monorepo?
 

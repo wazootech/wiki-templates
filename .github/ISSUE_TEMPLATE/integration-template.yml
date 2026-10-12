@@ -27,7 +27,7 @@ body:
     attributes:
       label: Proposed template subdirectory
       description: Templates are subdirectories of the `wazootech/wiki-templates` monorepo. Use the `<integration>` naming pattern unless there is a strong reason not to.
-      placeholder: wazootech/wiki-templates/open-swe
+      placeholder: wazootech/wiki-templates/templates/open-swe
     validations:
       required: true
 
@@ -53,7 +53,7 @@ body:
       label: Goal
       description: What should this template demonstrate?
       placeholder: |
-        Add `wazootech/wiki-templates/<integration>/`: a template showing how ... integrates with Wiki CLI to ...
+        Add `wazootech/wiki-templates/templates/<integration>/`: a template showing how ... integrates with Wiki CLI to ...
     validations:
       required: true
 
@@ -109,7 +109,7 @@ body:
         Suggested structure:
 
         ```text
-        <integration>/
+        templates/<integration>/
         +-- README.md
         +-- AGENTS.md
         +-- wiki.yml
@@ -183,7 +183,7 @@ body:
       label: Acceptance criteria
       description: Concrete checklist for when the template is done.
       placeholder: |
-        - [ ] New `wazootech/wiki-templates/<integration>/` template subdirectory exists.
+        - [ ] New `wazootech/wiki-templates/templates/<integration>/` template subdirectory exists.
         - [ ] README explains the Wiki CLI / integration boundary.
         - [ ] Template includes a working Wiki corpus.
         - [ ] `wiki fmt --check` passes.
