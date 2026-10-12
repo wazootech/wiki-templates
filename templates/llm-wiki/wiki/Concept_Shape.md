@@ -1,5 +1,7 @@
 ---
+id: wiki:ConceptShape
 type: sh:NodeShape
+sh:targetClass: schema:TechArticle
 headline: Concept shape
 description: SHACL constraints for concept and article pages in this LLM Wiki.
 ---

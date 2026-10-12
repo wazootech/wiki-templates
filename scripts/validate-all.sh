@@ -4,7 +4,7 @@ set -u
 failed=0
 count=0
 
-for cfg in templates/*/wiki.yml templates/*/docs/wiki.yml templates/*/sample/wiki.yml; do
+for cfg in templates/*/wiki.yml templates/*/docs/wiki.yml templates/*/sample/wiki.yml templates/*/sample-subwiki/wiki.yml; do
   [ -f "$cfg" ] || continue
   tpl="${cfg#templates/}"; tpl="${tpl%%/*}"
   count=$((count + 1))

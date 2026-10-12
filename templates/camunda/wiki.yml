@@ -63,6 +63,5 @@ lint:
 
 # Markdown formatting options (wiki fmt).
 fmt:
-  wrap: "no"
-  end_of_line: lf
-  extensions: [gfm, front_matters, wikilink, toc, footnote]
+  textWrap: never
+  newLineKind: lf
