@@ -1,6 +1,5 @@
 ---
 type: TechArticle
-headline: Alpha Sub-wiki Home
 description: Landing page of sample-subwiki, an independent corpus used to exercise composition.
 ---
 
