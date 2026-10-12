@@ -18,7 +18,7 @@ jobs:
 
       - name: Install Wiki CLI
         # Pinned to the version the wiki-templates root workflow uses; bumps are deliberate.
-        run: pip install wazootech-wiki==0.1.23
+        run: pip install wazootech-wiki==0.6.0
 
       - name: Check formatting
         run: wiki -c wiki.yml fmt --check

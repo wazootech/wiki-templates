@@ -9,7 +9,7 @@ You don't need to start from scratch — add Wikipedia-themed wiki pages to any 
 ### 1. Install the Wiki CLI
 
 ```bash
-pip install wazootech-wiki==0.1.23
+pip install wazootech-wiki==0.6.0
 ```
 
 ### 2. Create a `wiki.yml` config
@@ -148,21 +148,21 @@ This wiki builds to a static site. Any provider that serves static files works.
 ### Vercel
 
 1. Import this repo at [vercel.com/new](https://vercel.com/new)
-2. **Build command:** `pip install wazootech-wiki==0.1.23 pygments && python build.py --output-dir .vercel/output`
+2. **Build command:** `pip install wazootech-wiki==0.6.0 pygments && python build.py --output-dir .vercel/output`
 3. **Output directory:** `.vercel/output`
 4. Deploy
 
 ### Netlify
 
 1. Import this repo at [app.netlify.com/start](https://app.netlify.com/start)
-2. **Build command:** `pip install wazootech-wiki==0.1.23 pygments && python build.py --output-dir _site`
+2. **Build command:** `pip install wazootech-wiki==0.6.0 pygments && python build.py --output-dir _site`
 3. **Publish directory:** `_site`
 4. Deploy
 
 ### Cloudflare Pages
 
 1. Import this repo in the Cloudflare dashboard
-2. **Build command:** `pip install wazootech-wiki==0.1.23 pygments && python build.py --output-dir _site`
+2. **Build command:** `pip install wazootech-wiki==0.6.0 pygments && python build.py --output-dir _site`
 3. **Output directory:** `_site`
 4. Deploy
 
