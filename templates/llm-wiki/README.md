@@ -1,6 +1,6 @@
 # LLM Wiki template
 
-Opinionated [LLM Wiki](https://github.com/wazootech/wiki/blob/main/docs/wiki/LLM_Wiki.md) starter — agent gardening, SHACL shapes, and SPARQL-backed indexes. Distinct from the generic [`generic`](https://github.com/wazootech/wiki-templates/tree/main/generic) template.
+Opinionated [LLM Wiki](https://github.com/wazootech/wiki/blob/main/docs/wiki/LLM_Wiki.md) starter — agent gardening, SHACL shapes, and SPARQL-backed indexes. Distinct from the generic [`generic`](https://github.com/wazootech/wiki-templates/tree/main/templates/generic) template.
 
 Registry: [Wiki CLI templates](https://github.com/wazootech/wiki/blob/main/docs/wiki/wiki.md#ecosystem-templates).
 

@@ -40,7 +40,7 @@ Deploy `web/out/` to Netlify, Cloudflare Pages, or GitHub Pages. Re-run
 
 ## Related
 
-- [astro](https://github.com/wazootech/wiki-templates/tree/main/astro) template
+- [astro](https://github.com/wazootech/wiki-templates/tree/main/templates/astro) template
 - [Wiki CLI](https://github.com/wazootech/wiki)
 
 ## Deployment

@@ -1,8 +1,8 @@
 # Contributing to wiki-templates
 
-This monorepo collects wiki templates: each subdirectory is a standalone
-starting point for a docs site powered by Wiki CLI. Proposals for new
-integrations and templates are tracked here — this guide is the quality bar
+This monorepo collects wiki templates: each directory under `templates/` is a
+standalone starting point for a docs site powered by Wiki CLI. Proposals for
+new integrations and templates are tracked here — this guide is the quality bar
 they must meet.
 
 ## Filing a proposal
@@ -76,8 +76,9 @@ Drafts (by hand or via the issue form) use these sections:
 A good proposal:
 
 - states the proposed template as a **subdirectory of this monorepo**, e.g.
-  `wazootech/wiki-templates/<integration>/` — templates are monorepo
-  subdirectories, not standalone `wazootech/wiki-*-template` repos;
+  `wazootech/wiki-templates/templates/<integration>/` — templates are monorepo
+  subdirectories under `templates/`, not standalone `wazootech/wiki-*-template`
+  repos;
 - explains what Wiki CLI owns and what the integration owns;
 - includes deterministic validation commands;
 - avoids requiring private credentials in CI;
