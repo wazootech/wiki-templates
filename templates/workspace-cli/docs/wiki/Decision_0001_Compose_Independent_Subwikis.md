@@ -4,7 +4,7 @@ headline: Compose independent sub-wikis as sourced datasets
 description: ADR-0001 records the decision to compose independent sub-wiki repositories instead of maintaining a single monolithic corpus.
 wspace:status: accepted
 wspace:decisionOwner: Platform Workspace Team
-wspace:decisionDate: '2026-01-15'
+wspace:decisionDate: "2026-01-15"
 ---
 
 # Compose independent sub-wikis as sourced datasets
