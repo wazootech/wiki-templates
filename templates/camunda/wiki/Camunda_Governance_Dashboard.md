@@ -23,8 +23,8 @@ SELECT ?process ?owner WHERE {
 ORDER BY ?process
 ```
 
-| process | owner |
-| --- | --- |
+| process               | owner                      |
+| --------------------- | -------------------------- |
 | Loan Approval Process | Underwriting Process Owner |
 
 <!-- sparql:end -->
@@ -46,9 +46,9 @@ SELECT ?decision ?cadence WHERE {
 ORDER BY ?decision
 ```
 
-| decision | cadence |
-| --- | --- |
-| Credit Risk Decision | P90D |
+| decision             | cadence |
+| -------------------- | ------- |
+| Credit Risk Decision | P90D    |
 
 <!-- sparql:end -->
 
@@ -69,8 +69,8 @@ SELECT ?model ?processId WHERE {
 ORDER BY ?model
 ```
 
-| model | processId |
-| --- | --- |
+| model              | processId     |
+| ------------------ | ------------- |
 | Loan Approval BPMN | loan-approval |
 
 <!-- sparql:end -->
@@ -92,8 +92,8 @@ SELECT ?task ?impl WHERE {
 ORDER BY ?task
 ```
 
-| task | impl |
-| --- | --- |
+| task                       | impl                     |
+| -------------------------- | ------------------------ |
 | Credit Bureau Service Task | Credit Bureau Job Worker |
 
 <!-- sparql:end -->
@@ -136,9 +136,9 @@ SELECT ?sla ?target WHERE {
 ORDER BY ?sla
 ```
 
-| sla | target |
-| --- | --- |
-| Loan Approval SLA | PT24H |
+| sla               | target |
+| ----------------- | ------ |
+| Loan Approval SLA | PT24H  |
 
 <!-- sparql:end -->
 
@@ -159,8 +159,8 @@ SELECT ?integration ?team WHERE {
 ORDER BY ?integration
 ```
 
-| integration | team |
-| --- | --- |
+| integration                     | team         |
+| ------------------------------- | ------------ |
 | Core Banking System Integration | Integrations |
 
 <!-- sparql:end -->
@@ -182,8 +182,8 @@ SELECT ?kpi ?target WHERE {
 ORDER BY ?kpi
 ```
 
-| kpi | target |
-| --- | --- |
-| First Pass Approval Rate KPI | 80% |
+| kpi                          | target |
+| ---------------------------- | ------ |
+| First Pass Approval Rate KPI | 80%    |
 
 <!-- sparql:end -->

@@ -29,8 +29,8 @@ config, and the `build.py` Python site builder.
 
 ## Tooling
 
-- Wiki CLI: `wiki` (pip package `wazootech-wiki==0.1.23`). Install with
-  `pip install wazootech-wiki==0.1.23`.
+- Wiki CLI: `wiki` (pip package `wazootech-wiki==0.5.0`). Install with
+  `pip install wazootech-wiki==0.5.0`.
 - `wiki.yml` at the repo root controls validation severities, link style,
   filename pattern, RDF prefixes, and formatting. Read it before changing
   tooling behavior.

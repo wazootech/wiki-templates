@@ -2,7 +2,7 @@
 
 Usage: python build.py [--output-dir _site]
 
-Depends on wazootech-wiki==0.1.23 as a library.
+Depends on wazootech-wiki==0.5.0 as a library.
 """
 
 from __future__ import annotations

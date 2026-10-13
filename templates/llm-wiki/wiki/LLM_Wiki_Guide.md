@@ -35,12 +35,16 @@ wiki render   # when SPARQL blocks change
 Add SPARQL result blocks to maintain dynamic tables (see [Style Guide](https://github.com/wazootech/wiki/blob/main/docs/wiki/Style_Guide.md)):
 
 <!-- sparql:start -->
+
 ```sparql
+PREFIX schema: <https://schema.org/>
 SELECT ?page WHERE { ?page a schema:Person }
 ```
-| page |
-| --- |
+
+| page                                |
+| ----------------------------------- |
 | [Ethan_Davidson](Ethan_Davidson.md) |
+
 <!-- sparql:end -->
 
 Run `wiki render` to refresh stale tables.

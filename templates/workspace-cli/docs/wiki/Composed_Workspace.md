@@ -33,10 +33,10 @@ SELECT ?source ?repo WHERE {
 ORDER BY ?source
 ```
 
-| source | repo |
-| --- | --- |
+| source      | repo                                |
+| ----------- | ----------------------------------- |
 | Alpha Brain | https://github.com/acme/alpha-brain |
-| Beta Brain | https://github.com/acme/beta-brain |
+| Beta Brain  | https://github.com/acme/beta-brain  |
 
 <!-- sparql:end -->
 
