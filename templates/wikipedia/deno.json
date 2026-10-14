@@ -6,8 +6,8 @@
   },
   "imports": {
     "@std/path": "jsr:@std/path@^1.0.0",
-    "@wazoo/wiki": "jsr:@wazoo/wiki@0.6.0",
-    "@wazoo/wiki/theme": "jsr:@wazoo/wiki@0.6.0/theme",
+    "@wazoo/wiki": "jsr:@wazoo/wiki@0.7.0",
+    "@wazoo/wiki/theme": "jsr:@wazoo/wiki@0.7.0/theme",
     "prismjs": "npm:prismjs@1.30.0"
   },
   "fmt": {

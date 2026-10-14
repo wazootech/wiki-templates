@@ -9,7 +9,7 @@ You don't need to start from scratch — add Wikipedia-themed wiki pages to any 
 ### 1. Install the Wiki CLI
 
 ```bash
-pip install wazootech-wiki==0.6.0
+pip install wazootech-wiki==0.7.0
 ```
 
 The theme build additionally needs the Deno 2 runtime (`deno --version`); see
