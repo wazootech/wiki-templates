@@ -1,60 +1,28 @@
 # Wiki Templates
 
-Starter templates for [Wiki CLI](https://github.com/wazootech/wiki) — vault scaffolds, publish integrations, and framework starters.
-
-Each directory under `templates/` is a self-contained template you can clone and customize. See the individual READMEs for setup instructions.
+Starter templates for [Wiki CLI](https://github.com/wazootech/wiki).
 
 ## Templates
 
 | Template | Description | Stack |
 |----------|-------------|-------|
-| [generic](templates/generic/) | Minimal Wiki CLI starter — equivalent to `wiki init` output with GitHub Pages deploy | Python, Jinja2 |
-| [quartz](templates/quartz/) | Quartz publish integration for wiki vaults | TypeScript, Quartz |
-| [llm-wiki](templates/llm-wiki/) | LLM Wiki pattern starter — agent gardening, SHACL shapes, SPARQL indexes | Python, Jinja2 |
-| [yasgui](templates/yasgui/) | YASGUI SPARQL explorer for browsing wiki graph data | HTML, shell |
-| [wikipedia](templates/wikipedia/) | Wikipedia-themed static site builder using Wiki CLI + Deno theme API | Deno, TypeScript |
-| [mintlify](templates/mintlify/) | Mintlify docs site from a Wiki CLI vault | TypeScript, Mintlify |
-| [holocron](templates/holocron/) | Holocron docs site from a Wiki CLI vault | TypeScript, Vite |
-| [astro](templates/astro/) | Astro SSG consuming wiki export JSON-LD | TypeScript, Astro |
-| [nextjs](templates/nextjs/) | Next.js App Router SSG consuming wiki export JSON-LD | TypeScript, Next.js |
-| [camunda](templates/camunda/) | Camunda BPMN/DMN governance knowledge base | Markdown, SHACL, JSON Schema |
-| [cocoindex](templates/cocoindex/) | CocoIndex incremental memory sidecar with pgvector | Python, Docker, pgvector |
-| [workspace-cli](templates/workspace-cli/) | Composed workspace of independently-owned sub-wiki repos with named-graph provenance | Markdown, SHACL, bash |
+| [wikipedia](templates/wikipedia/) | Wikipedia-themed static site builder on the Wiki CLI theme API | Deno, TypeScript |
 
 ## Quick start
 
 ```bash
-# Clone a template
+# Clone the template
 git clone https://github.com/wazootech/wiki-templates.git
-cd wiki-templates/templates/<template>
+cd wiki-templates/templates/wikipedia
 
-# Follow the template's README for setup
-cat README.md
+# Or scaffold it into an existing vault
+wiki init --template wikipedia
+
+# Build the site
+deno task build
 ```
 
-## Creating a new template
-
-Each template should contain at minimum:
-
-- `wiki.yml` — Wiki CLI configuration
-- `wiki/` — Sample markdown pages with semantic frontmatter
-- `README.md` — Setup instructions and template description
-- `.github/workflows/` — CI for the four wiki gates and optional deploy
-
-Templates must pass all four wiki gates: `wiki fmt --check`, `wiki lint --strict`,
-`wiki check --strict`, and `wiki render --check`. Each template's own
-`.github/workflows/ci.yml` mirrors those four steps with an explicit `-c <config>`
-and a pinned Wiki CLI; [`templates/generic/.github/workflows/ci.yml`](templates/generic/.github/workflows/ci.yml)
-is the canonical copy to diff yours against. The repository CI auto-discovers
-template configs (`wiki.yml`, `docs/wiki.yml`, or `sample/wiki.yml` per template)
-and runs all gates across every template, so run the same loop locally before
-opening a PR:
-
-```bash
-bash scripts/validate-all.sh
-```
-
-See `templates/generic/` for the minimal structure.
+`templates/wikipedia/README.md` covers installation, assets, and deployment.
 
 ## Keeping pins current
 
@@ -77,15 +45,33 @@ secret — a fine-grained PAT or GitHub App token with `contents: write` and
 `pull_requests: write` — because a PR opened with the default `GITHUB_TOKEN`
 does not trigger CI on itself.
 
-## Why a monorepo?
+## Validation
 
-Templates live in subdirectories of this repo rather than as separate `wazootech/wiki-<name>-template` repos. The tradeoffs:
+Every template must pass the four wiki gates:
 
-- **Discoverability** — all templates are visible in one place; users can browse and compare without knowing repo names in advance.
-- **Shared CI** — a single workflow runs `wiki fmt/lint/check/render` across every template, so a upstream Wiki CLI change that breaks a template is caught in one PR.
-- **Atomic cross-template changes** — updates to shared conventions (lint rules, SHACL patterns, deploy workflows) land in one commit.
-- **Lower maintenance overhead** — one repo to configure, one issue tracker, one set of branch protections.
+```bash
+bash scripts/validate-all.sh
+```
 
-The cost is that `wiki init --template` must shallow-clone the entire monorepo to copy one subdirectory. In practice this is fast (`--depth 1`) and a single network round-trip. If this ever becomes a concern, the GitHub Contents API could fetch individual template files without a full clone.
+The script auto-discovers each template's config (`wiki.yml`, `docs/wiki.yml`,
+`sample/wiki.yml`, or `sample-subwiki/wiki.yml`) and runs `fmt --check`,
+`lint --strict`, `check --strict`, and `render --check`.
+`templates/wikipedia/.github/workflows/ci.yml` mirrors those gates with a pinned
+Wiki CLI.
 
-The original individual repos were consolidated to reduce clutter in the [wazootech](https://github.com/wazootech) organization.
+## Why this is a separate repository
+
+The template lives outside [`wazootech/wiki`](https://github.com/wazootech/wiki)
+because it owns a publish surface — layout, assets, and build script — not the
+engine. This repository's CI never runs the template's workflows; they are
+payload for the scaffolded site.
+
+`wiki init --template` shallow-clones this repository (`--depth 1`) to copy the
+one subdirectory, which is a single network round-trip.
+
+## Retired templates
+
+This repository held twelve templates; eleven were retired on 2026-10-14
+([#64](https://github.com/wazootech/wiki-templates/issues/64)): `astro`,
+`camunda`, `cocoindex`, `generic`, `holocron`, `llm-wiki`, `mintlify`, `nextjs`,
+`quartz`, `workspace-cli`, `yasgui`. Their history remains in this repository.

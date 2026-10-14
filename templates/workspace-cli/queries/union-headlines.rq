@@ -1,5 +1,0 @@
-SELECT ?name
-WHERE {
-  ?doc <https://schema.org/headline> ?name .
-}
-ORDER BY ?name

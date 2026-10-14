@@ -1,9 +1,0 @@
-_site/
-.pytest_cache/
-__pycache__/
-.venv/
-web/node_modules/
-web/.next/
-web/out/
-web/dist/
-node_modules/

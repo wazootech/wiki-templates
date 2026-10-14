@@ -1,5 +1,0 @@
-{
-  "buildCommand": "npx mint export && unzip -o export.zip -d dist && rm export.zip",
-  "outputDirectory": "dist",
-  "cleanUrls": true
-}

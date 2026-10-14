@@ -1,7 +1,0 @@
-SELECT ?source ?headline
-WHERE {
-  GRAPH ?source {
-    ?doc <https://schema.org/headline> ?headline .
-  }
-}
-ORDER BY ?source
