@@ -56,7 +56,7 @@ export function buildSiteToOutputDir(
   return buildThemedSite(config, outputDir, {
     dir: TEMPLATE_DIR,
     title_suffix: " - Wiki Wikipedia Template",
-    metadata: { note: false, highlight: highlightRdf },
+    metadata: { highlight: highlightRdf },
   });
 }
 
