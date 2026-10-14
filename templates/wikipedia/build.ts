@@ -119,7 +119,9 @@ function substitute(
 
 function highlightRdf(text: string, lexer: string): string {
   const language = PRISM_LANGUAGE_BY_LEXER[lexer];
-  const grammar = language === undefined ? undefined : Prism.languages[language];
+  const grammar = language === undefined
+    ? undefined
+    : Prism.languages[language];
   if (grammar === undefined) return escapeHtml(text);
   return Prism.highlight(text, grammar, language);
 }
