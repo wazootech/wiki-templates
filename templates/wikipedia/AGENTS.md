@@ -27,8 +27,8 @@ content/wiki repo: the operating surface is Markdown under `wiki/`, a `wiki.yml`
 
 ## Tooling
 
-- Wiki CLI: `wiki` (pip package `wazootech-wiki==0.6.0`). Install with
-  `pip install wazootech-wiki==0.6.0`.
+- Wiki CLI: `wiki` (pip package `wazootech-wiki==0.7.0`). Install with
+  `pip install wazootech-wiki==0.7.0`.
 - `wiki.yml` at the repo root controls validation severities, link style,
   filename pattern, RDF prefixes, and formatting. Read it before changing
   tooling behavior.
