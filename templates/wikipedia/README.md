@@ -12,6 +12,9 @@ You don't need to start from scratch — add Wikipedia-themed wiki pages to any 
 pip install wazootech-wiki==0.6.0
 ```
 
+The theme build additionally needs the Deno 2 runtime (`deno --version`); see
+<https://deno.com>.
+
 ### 2. Create a `wiki.yml` config
 
 Place this at your project root:
@@ -54,9 +57,8 @@ lint:
   link_style: error
 
 fmt:
-  wrap: "no"
-  end_of_line: lf
-  extensions: [gfm, front_matters, wikilink, toc, footnote]
+  textWrap: never
+  newLineKind: lf
 ```
 
 ### 3. Copy the build files from this repo
@@ -64,10 +66,10 @@ fmt:
 ```
 cp -r layouts .
 cp -r assets .
-cp build.py .
+cp build.ts deno.json .
 ```
 
-You need `build.py`, `layouts/wikipedia.html`, `assets/wikipedia.css`, `assets/wikipedia.js`, and `assets/logo.svg`.
+You need `build.ts`, `deno.json`, `layouts/wikipedia.html`, `assets/wikipedia.css`, `assets/wikipedia.js`, and `assets/logo.svg`.
 
 ### 4. Add semantic frontmatter to your markdown
 
@@ -90,7 +92,7 @@ Properties in frontmatter render as a Wikipedia-style infobox. See `wiki/Ethan_D
 ### 5. Build
 
 ```bash
-python build.py
+deno run -A build.ts
 ```
 
 Output goes to `_site/`. The built pages land under a folder matching your `site.base_url` (e.g. `_site/wiki/index.html` with the config above). Open it in a browser.
@@ -105,7 +107,8 @@ Copy `.github/workflows/ci.yml` from this repo to run `wiki fmt --check`, `wiki 
 - `wiki/` — Contains markdown files with semantic frontmatter.
 - `assets/` — Static assets (CSS, JS, logo) for the Wikipedia theme.
 - `layouts/` — Token-based layout template for the Wikipedia theme.
-- `build.py` — Build script using the Wiki Python library.
+- `build.ts` — Deno build script rendering the theme via `@wazoo/wiki/theme`.
+- `deno.json` — Import map and Deno settings for the build.
 - `queries/` — Saved SPARQL queries for recurring questions.
 - `.gitattributes` — Forces LF line endings so `wiki fmt` results are stable on every platform.
 
@@ -113,11 +116,11 @@ Copy `.github/workflows/ci.yml` from this repo to run `wiki fmt --check`, `wiki 
 
 - **Build** (Wikipedia theme):
   ```bash
-  python build.py
+  deno run -A build.ts
   ```
 - **Preview** (build locally, then serve the output folder):
   ```bash
-  python build.py --output-dir _site
+  deno run -A build.ts --output-dir _site
   python -m http.server -d _site
   ```
 - **Check** (integrity: SHACL, JSON Schema, route safety):
@@ -133,7 +136,7 @@ Copy `.github/workflows/ci.yml` from this repo to run `wiki fmt --check`, `wiki 
   wiki -c wiki.yml fmt
   ```
 
-`wiki serve` uses the Wiki CLI's built-in layout, which only knows the default token set — this theme's extra tokens (infobox, TOC, backlinks, categories, metadata) render via `python build.py`. Use the build + static-server preview above for the full theme.
+`wiki serve` uses the Wiki CLI's built-in layout, which only knows the default token set — this theme's extra tokens (infobox, TOC, backlinks, categories, metadata) render via `deno run -A build.ts`. Use the build + static-server preview above for the full theme.
 
 ## Deployment
 
@@ -148,22 +151,24 @@ This wiki builds to a static site. Any provider that serves static files works.
 ### Vercel
 
 1. Import this repo at [vercel.com/new](https://vercel.com/new)
-2. **Build command:** `pip install wazootech-wiki==0.6.0 pygments && python build.py --output-dir .vercel/output`
+2. **Build command:** `deno run -A build.ts --output-dir .vercel/output`
 3. **Output directory:** `.vercel/output`
 4. Deploy
 
 ### Netlify
 
 1. Import this repo at [app.netlify.com/start](https://app.netlify.com/start)
-2. **Build command:** `pip install wazootech-wiki==0.6.0 pygments && python build.py --output-dir _site`
+2. **Build command:** `deno run -A build.ts`
 3. **Publish directory:** `_site`
 4. Deploy
 
 ### Cloudflare Pages
 
 1. Import this repo in the Cloudflare dashboard
-2. **Build command:** `pip install wazootech-wiki==0.6.0 pygments && python build.py --output-dir _site`
+2. **Build command:** `deno run -A build.ts`
 3. **Output directory:** `_site`
 4. Deploy
 
-Make sure your `site.base_url` in `wiki.yml` matches where the site is served from (`/` for a custom domain or root path).
+Every provider above runs the Deno build, so its build image needs the Deno 2
+runtime. Make sure your `site.base_url` in `wiki.yml` matches where the site is
+served from (`/` for a custom domain or root path).

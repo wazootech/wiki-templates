@@ -12,9 +12,7 @@ the governing skill or reference before changing template internals.
 A Wikipedia-themed static wiki, built from Markdown pages with semantic
 frontmatter by the [Wiki CLI](https://github.com/wazootech/wiki). This is a
 content/wiki repo: the operating surface is Markdown under `wiki/`, a `wiki.yml`
-config, and the `build.py` Python site builder.
-
-## How to work here
+content/wiki repo: the operating surface is Markdown under `wiki/`, a `wiki.yml` config, and the `build.ts` Deno site builder.
 
 - Preserve template portability and avoid Wazoo-specific content unless the user
   asks to specialize it.
@@ -34,9 +32,11 @@ config, and the `build.py` Python site builder.
 - `wiki.yml` at the repo root controls validation severities, link style,
   filename pattern, RDF prefixes, and formatting. Read it before changing
   tooling behavior.
-- The Wikipedia theme renders only through `python build.py` (not `wiki serve`
-  or `wiki build`), because `build.py` fills the theme's extra layout tokens
+- The Wikipedia theme renders only through `deno run -A build.ts` (not `wiki serve`
+  or `wiki build`), because `build.ts` fills the theme's extra layout tokens
   (`infobox`, `toc`, `backlinks`, `categories`, `metadata`).
+- Deno 2 is required for the build; the template ships `deno.json` and no
+  committed `deno.lock`.
 
 ## Style guidelines
 
@@ -59,5 +59,5 @@ After meaningful edits, run:
 - `wiki -c wiki.yml lint --strict`
 - `wiki -c wiki.yml check --strict`
 - `wiki -c wiki.yml render --check` (embedded SPARQL blocks still current)
-- `python build.py --output-dir _site` (confirm no raw `%wiki.*%` tokens in the
+- `deno run -A build.ts --output-dir _site` (confirm no raw `%wiki.*%` tokens in the
   built HTML)

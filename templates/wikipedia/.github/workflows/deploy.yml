@@ -18,21 +18,11 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      - uses: actions/setup-python@v5
+      - uses: denoland/setup-deno@v2
         with:
-          python-version: "3.12"
-      - name: Cache pip
-        uses: actions/cache@v4
-        with:
-          path: ~/.cache/pip
-          key: ${{ runner.os }}-pip-${{ hashFiles('**/requirements.txt') }}
-          restore-keys: |
-            ${{ runner.os }}-pip-
-      - name: Install dependencies
-        # Pinned to the version the wiki-templates root workflow uses; bumps are deliberate.
-        run: pip install wazootech-wiki==0.6.0 pygments
+          deno-version: v2.x
       - name: Build site
-        run: python build.py
+        run: deno run -A build.ts
       - uses: actions/upload-pages-artifact@v3
         with:
           path: _site
