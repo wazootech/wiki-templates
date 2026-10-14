@@ -33,8 +33,10 @@ content/wiki repo: the operating surface is Markdown under `wiki/`, a `wiki.yml`
   filename pattern, RDF prefixes, and formatting. Read it before changing
   tooling behavior.
 - The Wikipedia theme renders only through `deno run -A build.ts` (not `wiki serve`
-  or `wiki build`), because `build.py` fills the theme's extra layout tokens
+  or `wiki build`), because `build.ts` fills the theme's extra layout tokens
   (`infobox`, `toc`, `backlinks`, `categories`, `metadata`).
+- Deno 2 is required for the build; the template ships `deno.json` and no
+  committed `deno.lock`.
 
 ## Style guidelines
 
