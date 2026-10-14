@@ -90,7 +90,7 @@ Properties in frontmatter render as a Wikipedia-style infobox. See `wiki/Ethan_D
 ### 5. Build
 
 ```bash
-python build.py
+deno run -A build.ts
 ```
 
 Output goes to `_site/`. The built pages land under a folder matching your `site.base_url` (e.g. `_site/wiki/index.html` with the config above). Open it in a browser.
@@ -113,11 +113,11 @@ Copy `.github/workflows/ci.yml` from this repo to run `wiki fmt --check`, `wiki 
 
 - **Build** (Wikipedia theme):
   ```bash
-  python build.py
+  deno run -A build.ts
   ```
 - **Preview** (build locally, then serve the output folder):
   ```bash
-  python build.py --output-dir _site
+  deno run -A build.ts --output-dir _site
   python -m http.server -d _site
   ```
 - **Check** (integrity: SHACL, JSON Schema, route safety):
@@ -133,7 +133,7 @@ Copy `.github/workflows/ci.yml` from this repo to run `wiki fmt --check`, `wiki 
   wiki -c wiki.yml fmt
   ```
 
-`wiki serve` uses the Wiki CLI's built-in layout, which only knows the default token set — this theme's extra tokens (infobox, TOC, backlinks, categories, metadata) render via `python build.py`. Use the build + static-server preview above for the full theme.
+`wiki serve` uses the Wiki CLI's built-in layout, which only knows the default token set — this theme's extra tokens (infobox, TOC, backlinks, categories, metadata) render via `deno run -A build.ts`. Use the build + static-server preview above for the full theme.
 
 ## Deployment
 
@@ -148,21 +148,21 @@ This wiki builds to a static site. Any provider that serves static files works.
 ### Vercel
 
 1. Import this repo at [vercel.com/new](https://vercel.com/new)
-2. **Build command:** `pip install wazootech-wiki==0.6.0 pygments && python build.py --output-dir .vercel/output`
+pip install wazootech-wiki==0.6.0
 3. **Output directory:** `.vercel/output`
 4. Deploy
 
 ### Netlify
 
 1. Import this repo at [app.netlify.com/start](https://app.netlify.com/start)
-2. **Build command:** `pip install wazootech-wiki==0.6.0 pygments && python build.py --output-dir _site`
+pip install wazootech-wiki==0.6.0
 3. **Publish directory:** `_site`
 4. Deploy
 
 ### Cloudflare Pages
 
 1. Import this repo in the Cloudflare dashboard
-2. **Build command:** `pip install wazootech-wiki==0.6.0 pygments && python build.py --output-dir _site`
+pip install wazootech-wiki==0.6.0
 3. **Output directory:** `_site`
 4. Deploy
 

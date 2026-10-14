@@ -30,9 +30,9 @@ jobs:
             ${{ runner.os }}-pip-
       - name: Install dependencies
         # Pinned to the version the wiki-templates root workflow uses; bumps are deliberate.
-        run: pip install wazootech-wiki==0.6.0 pygments
+        run: pip install wazootech-wiki==0.6.0
       - name: Build site
-        run: python build.py
+        run: deno run -A build.ts
       - uses: actions/upload-pages-artifact@v3
         with:
           path: _site

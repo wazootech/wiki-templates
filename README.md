@@ -12,7 +12,7 @@ Each directory under `templates/` is a self-contained template you can clone and
 | [quartz](templates/quartz/) | Quartz publish integration for wiki vaults | TypeScript, Quartz |
 | [llm-wiki](templates/llm-wiki/) | LLM Wiki pattern starter — agent gardening, SHACL shapes, SPARQL indexes | Python, Jinja2 |
 | [yasgui](templates/yasgui/) | YASGUI SPARQL explorer for browsing wiki graph data | HTML, shell |
-| [wikipedia](templates/wikipedia/) | Wikipedia-themed static site builder using Wiki Python API | Python, Jinja2 |
+| [wikipedia](templates/wikipedia/) | Wikipedia-themed static site builder using Wiki CLI + Deno theme API | Deno, TypeScript |
 | [mintlify](templates/mintlify/) | Mintlify docs site from a Wiki CLI vault | TypeScript, Mintlify |
 | [holocron](templates/holocron/) | Holocron docs site from a Wiki CLI vault | TypeScript, Vite |
 | [astro](templates/astro/) | Astro SSG consuming wiki export JSON-LD | TypeScript, Astro |
