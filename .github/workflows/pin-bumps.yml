@@ -1,0 +1,81 @@
+name: Pin bumps
+
+# Keeps the pinned Wiki CLI versions across this monorepo current. A publish is
+# the only thing that makes a new version visible here, and nothing in this repo
+# notices one, so the check runs on a schedule and opens a PR when a pin falls
+# behind. See wazootech/wiki#66 and the "Downstream templates" rule in
+# wazootech/wiki's AGENTS.md.
+
+on:
+  schedule:
+    # Mondays at 06:23 UTC. Offset from the top of the hour to avoid the queue.
+    - cron: "23 6 * * 1"
+  workflow_dispatch:
+
+concurrency:
+  group: pin-bumps
+  cancel-in-progress: false
+
+permissions:
+  contents: read
+
+jobs:
+  bump:
+    name: Bump pinned Wiki CLI versions
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      # A PR opened with the default GITHUB_TOKEN never triggers CI on itself,
+      # so the bump PR uses a separate credential on purpose.
+      - name: Require the pull-request token
+        env:
+          TOKEN: ${{ secrets.PIN_BUMP_TOKEN }}
+        run: |
+          if [ -z "$TOKEN" ]; then
+            echo "::error::PIN_BUMP_TOKEN is not set. Add a fine-grained PAT (or GitHub App token) with contents:write and pull_requests:write on this repository before this job can open the bump PR."
+            exit 1
+          fi
+
+      - name: Compare the pins against the published versions
+        id: pins
+        run: |
+          python scripts/wiki-pins.py sync \
+            --summary-file "$RUNNER_TEMP/pin-bumps.md" \
+            --github-output "$GITHUB_OUTPUT"
+
+      # The only edits the job may make are version substrings.
+      - name: Prove the diff only changes version strings
+        if: steps.pins.outputs.changed == 'true'
+        run: python scripts/wiki-pins.py assert-diff
+
+      - name: Open or update the bump pull request
+        if: steps.pins.outputs.changed == 'true'
+        uses: peter-evans/create-pull-request@v8
+        with:
+          token: ${{ secrets.PIN_BUMP_TOKEN }}
+          base: main
+          branch: pin-bumps
+          delete-branch: true
+          commit-message: "chore: bump pinned Wiki CLI versions"
+          title: "chore: bump pinned Wiki CLI to ${{ steps.pins.outputs.latest_pypi }}"
+          body-path: ${{ runner.temp }}/pin-bumps.md
+
+      # Nothing is behind, so an older bump PR is now stale.
+      - name: Close a stale bump pull request
+        if: steps.pins.outputs.changed != 'true'
+        env:
+          GH_TOKEN: ${{ secrets.PIN_BUMP_TOKEN }}
+        run: |
+          number=$(gh pr list --repo "$GITHUB_REPOSITORY" --head pin-bumps \
+            --state open --json number --jq '.[0].number')
+          if [ -z "$number" ]; then
+            echo "No open bump pull request; nothing to do."
+            exit 0
+          fi
+          gh pr close "$number" --comment "Closed because every pin now matches the published latest version."
+          gh api -X DELETE "repos/$GITHUB_REPOSITORY/git/refs/heads/pin-bumps" || true

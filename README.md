@@ -56,6 +56,27 @@ bash scripts/validate-all.sh
 
 See `templates/generic/` for the minimal structure.
 
+## Keeping pins current
+
+Every template pins the Wiki CLI it is built against: `wazootech-wiki==<version>`
+in its workflows and prose, `jsr:@wazoo/wiki@<version>` in its `deno.json`.
+`scripts/wiki-pins.py` is the single place that knows where those pins live:
+
+```bash
+python scripts/wiki-pins.py scan         # read-only report: pins, published versions, drift
+python scripts/wiki-pins.py check        # exit 1 when a pin is behind the published latest
+python scripts/wiki-pins.py sync         # rewrite the pins that are behind
+python scripts/wiki-pins.py assert-diff  # fail unless the diff only changes version substrings
+```
+
+`.github/workflows/pin-bumps.yml` runs `sync` weekly, and on demand; `assert-diff`
+proves the result changes nothing but version substrings; then the job opens or
+updates a single `pin-bumps` PR and stops. It never pushes to `main`, and it
+closes the PR when nothing is behind any more. The job needs a `PIN_BUMP_TOKEN`
+secret — a fine-grained PAT or GitHub App token with `contents: write` and
+`pull_requests: write` — because a PR opened with the default `GITHUB_TOKEN`
+does not trigger CI on itself.
+
 ## Why a monorepo?
 
 Templates live in subdirectories of this repo rather than as separate `wazootech/wiki-<name>-template` repos. The tradeoffs:
