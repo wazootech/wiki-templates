@@ -4,6 +4,10 @@
   "tasks": {
     "build": "deno run -A build.ts"
   },
+  "minimumDependencyAge": {
+    "age": "P1D",
+    "exclude": ["jsr:@wazoo/wiki"]
+  },
   "imports": {
     "@std/path": "jsr:@std/path@^1.0.0",
     "@wazoo/wiki": "jsr:@wazoo/wiki@0.7.0",
