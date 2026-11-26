@@ -23,11 +23,28 @@ jobs:
       - name: Validate all templates
         run: bash scripts/validate-all.sh
 
-  deno:
-    # The template's TypeScript is shipped payload: this job only checks it,
-    # it never rewrites it. No lockfile ships with the template (a scaffolded
-    # site generates its own), so the check cannot run --frozen.
-    name: Template fmt, lint, typecheck
+  bun:
+    # Format, lint and type check run on Bun against the template's TypeScript
+    # (build.ts is shipped payload: these gates only check it, never rewrite it).
+    name: Format, lint, typecheck
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+      - uses: oven-sh/setup-bun@0c5077e51419868618aeaa5fe8019c62421857d6 # v2.2.0
+        with:
+          bun-version: "1.x"
+      - name: Install dependencies
+        run: bun install --frozen-lockfile --ignore-scripts
+      - name: Format, lint, type check, dependency pins
+        run: bun run ci
+
+  template-build:
+    # Deliberate Deno leftover: the template builds through @wazoo/wiki 0.7.0,
+    # which calls Deno.* internally, so a scaffolded site still builds on Deno.
+    # This job proves the shipped template (deno.json included) still builds.
+    # No lockfile ships with the template (a scaffolded site generates its own),
+    # so it cannot run --frozen. Remove it when the engine runs on Bun.
+    name: Template builds on Deno
     runs-on: ubuntu-latest
     defaults:
       run:
@@ -37,6 +54,11 @@ jobs:
       - uses: denoland/setup-deno@22d081ff2d3a40755e97629de92e3bcbfa7cf2ed # v2.0.5
         with:
           deno-version: v2.9.8
-      - run: deno fmt --check
-      - run: deno lint
-      - run: deno check build.ts
+      - name: Build site
+        run: deno run -A build.ts --output-dir _site
+      - name: Check for leftover wiki tokens
+        run: |
+          if grep -R '%wiki\.' _site; then
+            echo "::error::unreplaced wiki tokens in the built site"
+            exit 1
+          fi

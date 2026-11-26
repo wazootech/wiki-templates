@@ -53,6 +53,18 @@ jobs:
         if: steps.pins.outputs.changed == 'true'
         run: python scripts/wiki-pins.py assert-diff
 
+      # package.json carries the pin too (what Bun installs to type check the
+      # template), so bun.lock must follow it. assert-diff ignores bun.lock.
+      - name: Refresh bun.lock
+        if: steps.pins.outputs.changed == 'true'
+        uses: oven-sh/setup-bun@0c5077e51419868618aeaa5fe8019c62421857d6 # v2.2.0
+        with:
+          bun-version: "1.x"
+
+      - name: Install to update bun.lock
+        if: steps.pins.outputs.changed == 'true'
+        run: bun install --ignore-scripts
+
       - name: Open or update the bump pull request
         if: steps.pins.outputs.changed == 'true'
         uses: peter-evans/create-pull-request@5f6978faf089d4d20b00c7766989d076bb2fc7f1 # v8.1.1
