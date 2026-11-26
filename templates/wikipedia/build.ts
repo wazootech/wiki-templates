@@ -49,10 +49,9 @@ const PRISM_LANGUAGE_BY_LEXER: Readonly<Record<string, string>> = {
 
 function highlightRdf(text: string, view: MetadataView): string {
   const language = PRISM_LANGUAGE_BY_LEXER[view.lexer];
-  const grammar = language === undefined
-    ? undefined
-    : Prism.languages[language];
-  if (grammar === undefined || language === undefined) return escapeHtml(text);
+  if (language === undefined) return escapeHtml(text);
+  const grammar = Prism.languages[language];
+  if (grammar === undefined) return escapeHtml(text);
   return Prism.highlight(text, grammar, language);
 }
 
