@@ -27,7 +27,10 @@ deno task build
 ## Keeping pins current
 
 Every template pins the Wiki CLI it is built against: `wazootech-wiki==<version>`
-in its workflows and prose, `jsr:@wazoo/wiki@<version>` in its `deno.json`.
+in its workflows and prose, `jsr:@wazoo/wiki@<version>` in its `deno.json`. The
+repo-root `package.json` repeats the JSR pin as `npm:@jsr/wazoo__wiki@<version>`
+so Bun can type check `build.ts`; `scripts/check-template-deps.ts` fails CI when
+the two drift.
 `scripts/wiki-pins.py` is the single place that knows where those pins live:
 
 ```bash
@@ -46,6 +49,10 @@ secret — a fine-grained PAT or GitHub App token with `contents: write` and
 does not trigger CI on itself.
 
 ## Validation
+
+This repository's own gates run on Bun: `bun install --frozen-lockfile`, then
+`bun run ci` (`bun fmt --check`, Oxlint, `bun check`, and the pin match above).
+The templates themselves still build on Deno; see the note in `AGENTS.md`.
 
 Every template must pass the four wiki gates:
 
