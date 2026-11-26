@@ -1,0 +1,12 @@
+# Template payload and prose are formatted by their owners (`wiki fmt` for
+# Markdown, the template author for layouts and assets), as `deno fmt` did when
+# its scope was build.ts and deno.json. bun fmt covers the TypeScript and JSON
+# this repo owns.
+*.md
+*.html
+*.css
+*.js
+*.svg
+*.yml
+*.sparql
+bun.lock
