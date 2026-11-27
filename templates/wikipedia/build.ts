@@ -8,9 +8,16 @@
  * look; the page loop, metadata panels, infobox, TOC and asset copy are the
  * engine's `buildThemedSite` (`@wazoo/wiki/theme`, 0.7.0+). This file only
  * adds Prism highlighting for the RDF metadata panels.
+ *
+ * This file uses only `node:` APIs, so it is runtime-neutral. The build still
+ * needs Deno because `@wazoo/wiki` 0.7.0 calls `Deno.*` internally (for
+ * example `Config.load` reads `Deno.cwd()`); it can move to Bun or Node once
+ * the engine is cross-runtime.
  */
 
-import { dirname, fromFileUrl, join } from "@std/path";
+import { dirname, join } from "node:path";
+import process from "node:process";
+import { fileURLToPath } from "node:url";
 import {
   buildThemedSite,
   Config,
@@ -22,7 +29,7 @@ import "prismjs/components/prism-turtle.js";
 import "prismjs/components/prism-json.js";
 import "prismjs/components/prism-markup.js";
 
-const TEMPLATE_DIR = dirname(fromFileUrl(import.meta.url));
+const TEMPLATE_DIR = dirname(fileURLToPath(import.meta.url));
 
 /**
  * Metadata lexer (from `METADATA_VIEWS`) to Prism language.
@@ -76,6 +83,9 @@ function parseOutputDir(args: string[]): string {
 
 if (import.meta.main) {
   const config = Config.load(join(TEMPLATE_DIR, "wiki.yml"));
-  const written = await buildSiteToOutputDir(config, parseOutputDir(Deno.args));
+  const written = await buildSiteToOutputDir(
+    config,
+    parseOutputDir(process.argv.slice(2)),
+  );
   console.log(`Built ${written} pages`);
 }
