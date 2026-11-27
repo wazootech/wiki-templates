@@ -6,7 +6,10 @@ rule in wazootech/wiki's AGENTS.md is what this automates):
 
   templates/**/.github/workflows/*.yml   wazootech-wiki==<version>  (PyPI)
   templates/**/deno.json                 jsr:@wazoo/wiki@<version>  (JSR)
-  templates/**/*.md                      the same two syntaxes, in prose
+  package.json (repo root)               npm:@jsr/wazoo__wiki@<version>  (JSR,
+                                         what Bun installs to type check the
+                                         template; bun.lock follows it)
+  templates/**/*.md                      the first two syntaxes, in prose
 
 The monorepo's own `.github/workflows/*.yml` installs the same CLI, so it is
 scanned too: pinning the templates newer than the engine the repository's CI
@@ -16,7 +19,8 @@ Markdown is in scope because a template's README repeats the install pin in
 prose (`pip install wazootech-wiki==<version>`); a bump that leaves that
 behind is the same stale pin in a second language. Only the two pin syntaxes
 above are ever rewritten, and `assert-diff` fails if a bump changes anything
-else on a line.
+else on a line (`bun.lock` is excluded from that comparison: the workflow
+regenerates it with `bun install` after a bump, and its lines carry hashes).
 
 Subcommands
   scan          read-only report: every pin, every published version, any drift
@@ -44,6 +48,8 @@ from pathlib import Path
 
 PYPI_PACKAGE = "wazootech-wiki"
 JSR_PACKAGE = "@wazoo/wiki"
+# The same JSR package as Bun installs it, through JSR's npm compatibility layer.
+NPM_JSR_ALIAS = "npm:@jsr/wazoo__wiki"
 PYPI_URL = f"https://pypi.org/pypi/{PYPI_PACKAGE}/json"
 JSR_URL = "https://jsr.io/@wazoo/wiki/meta.json"
 
@@ -62,6 +68,11 @@ PIN_PATTERNS = (
         f"jsr:{JSR_PACKAGE}@",
         "jsr",
         re.compile(rf"(?P<package>jsr:{re.escape(JSR_PACKAGE)}@)(?P<version>{VERSION})"),
+    ),
+    (
+        f"{NPM_JSR_ALIAS}@",
+        "jsr",
+        re.compile(rf"(?P<package>{re.escape(NPM_JSR_ALIAS)}@)(?P<version>{VERSION})"),
     ),
 )
 
@@ -157,6 +168,7 @@ def in_scope_files(root: Path) -> tuple[list[Path], list[Path]]:
         if p.suffix in {".yml", ".yaml"}
     )
     monorepo_files.extend(sorted(root.glob("*.md")))
+    monorepo_files.extend(p for p in (root / "package.json",) if p.is_file())
     return template_files, monorepo_files
 
 
@@ -290,7 +302,7 @@ def mask(line: str) -> str:
 def diff_lines(root: Path) -> tuple[list[str], list[str]]:
     """Removed and added lines of the working-tree diff, ignoring hunks."""
     result = subprocess.run(
-        ["git", "diff", "-U0"],
+        ["git", "diff", "-U0", "--", ".", ":(exclude)bun.lock"],
         cwd=root,
         capture_output=True,
         text=True,
@@ -340,7 +352,7 @@ def report(root: Path, data: dict, latest: dict, drift: dict) -> None:
             where = (
                 f"{plural(scoped['templates'], 'template')}, {plural(scoped['files'], 'file')}"
                 if group == "templates"
-                else f"{plural(scoped['files'], 'file')} in the monorepo's own workflows"
+                else f"{plural(scoped['files'], 'file')} in the monorepo's own files"
             )
             print(f"    {where}: {plural(scoped['occurrences'], 'occurrence')}")
             print(f"    pinned versions: {', '.join(scoped['versions'])}")
