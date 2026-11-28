@@ -1,4 +1,4 @@
 # Enforce LF line endings for all text files, on every platform.
-# The formatters (bun fmt, deno fmt) emit and expect LF; working
+# The formatters (bun fmt, wiki fmt) emit and expect LF; working
 # trees must never silently flip committed files to CRLF on Windows checkouts.
 * text=auto eol=lf

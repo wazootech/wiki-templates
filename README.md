@@ -6,7 +6,7 @@ Starter templates for [Wiki CLI](https://github.com/wazootech/wiki).
 
 | Template | Description | Stack |
 |----------|-------------|-------|
-| [wikipedia](templates/wikipedia/) | Wikipedia-themed static site builder on the Wiki CLI theme API | Deno, TypeScript |
+| [wikipedia](templates/wikipedia/) | Wikipedia-themed static site builder on the Wiki CLI theme API | Bun, TypeScript |
 
 ## Quick start
 
@@ -19,7 +19,8 @@ cd wiki-templates/templates/wikipedia
 wiki init --template wikipedia
 
 # Build the site
-deno task build
+bun install
+bun build.ts
 ```
 
 `templates/wikipedia/README.md` covers installation, assets, and deployment.
@@ -27,9 +28,9 @@ deno task build
 ## Keeping pins current
 
 Every template pins the Wiki CLI it is built against: `wazootech-wiki==<version>`
-in its workflows and prose, `jsr:@wazoo/wiki@<version>` in its `deno.json`. The
-repo-root `package.json` repeats the JSR pin as `npm:@jsr/wazoo__wiki@<version>`
-so Bun can type check `build.ts`; `scripts/check-template-deps.ts` fails CI when
+in its workflows and prose, `npm:@jsr/wazoo__wiki@<version>` in its
+`package.json`. The repo-root `package.json` repeats that JSR pin so Bun can type
+check `build.ts`; `scripts/check-template-deps.ts` fails CI when
 the two drift.
 `scripts/wiki-pins.py` is the single place that knows where those pins live:
 
@@ -52,7 +53,7 @@ does not trigger CI on itself.
 
 This repository's own gates run on Bun: `bun install --frozen-lockfile`, then
 `bun run ci` (`bun fmt --check`, Oxlint, `bun check`, and the pin match above).
-The templates themselves still build on Deno; see the note in `AGENTS.md`.
+The templates build on Bun too; CI proves it.
 
 Every template must pass the four wiki gates:
 
