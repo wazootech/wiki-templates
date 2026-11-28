@@ -1,0 +1,12 @@
+{
+  "name": "wiki-site",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "build": "bun build.ts"
+  },
+  "dependencies": {
+    "@wazoo/wiki": "npm:@jsr/wazoo__wiki@0.7.2",
+    "prismjs": "1.30.0"
+  }
+}

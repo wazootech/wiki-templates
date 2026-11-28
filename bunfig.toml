@@ -1,7 +1,6 @@
 [install]
-# The one-day supply-chain delay the template's deno.json minimumDependencyAge
-# enforces. The first-party @wazoo/wiki is excluded so a just-published release
-# resolves (it is also pinned to an exact version).
+# The one-day supply-chain delay. The first-party @wazoo/wiki is excluded so a
+# just-published release resolves (it is also pinned to an exact version).
 minimumReleaseAge = 86400
 minimumReleaseAgeExcludes = ["@jsr/wazoo__wiki"]
 

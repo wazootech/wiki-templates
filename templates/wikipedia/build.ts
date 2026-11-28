@@ -1,18 +1,13 @@
-#!/usr/bin/env -S deno run -A
+#!/usr/bin/env bun
 /**
  * Build this wiki into a static site with the full Wikipedia-themed layout.
  *
- * Usage: deno run -A build.ts [--output-dir _site]
+ * Usage: bun install, then bun build.ts [--output-dir _site]
  *
  * The layout in `layouts/wikipedia.html` owns its token vocabulary and its
  * look; the page loop, metadata panels, infobox, TOC and asset copy are the
  * engine's `buildThemedSite` (`@wazoo/wiki/theme`, 0.7.0+). This file only
  * adds Prism highlighting for the RDF metadata panels.
- *
- * This file uses only `node:` APIs, so it is runtime-neutral. The build still
- * needs Deno because `@wazoo/wiki` 0.7.0 calls `Deno.*` internally (for
- * example `Config.load` reads `Deno.cwd()`); it can move to Bun or Node once
- * the engine is cross-runtime.
  */
 
 import { dirname, join } from "node:path";

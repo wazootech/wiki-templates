@@ -15,7 +15,7 @@ jobs:
       - uses: actions/setup-python@v5
         with:
           python-version: "3.12"
-      - run: pip install wazootech-wiki==0.7.0
+      - run: pip install wazootech-wiki==0.7.2
       - name: Check formatting
         run: wiki -c wiki.yml fmt --check
       - name: Check wiki integrity
@@ -24,10 +24,10 @@ jobs:
         run: wiki -c wiki.yml lint --strict -v
       - name: Check rendered SPARQL blocks
         run: wiki -c wiki.yml render --check -v
-      - uses: denoland/setup-deno@v2
+      - uses: oven-sh/setup-bun@v2
         with:
-          deno-version: v2.x
+          bun-version: "1.x"
       - name: Build site
-        run: deno run -A build.ts
+        run: bun install && bun build.ts
       - name: Check for leftover wiki tokens
         run: ! grep -R "%wiki\." _site

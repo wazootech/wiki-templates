@@ -3,7 +3,7 @@
 This repository holds one template,
 [`templates/wikipedia/`](templates/wikipedia/): a Wikipedia-themed static site
 builder that consumes the Wiki CLI artifact contract — the `wiki` command, the
-`@wazoo/wiki` Deno API, and `@wazoo/wiki/theme`.
+`@wazoo/wiki` API, and `@wazoo/wiki/theme`.
 
 New templates are not being added here. The other eleven were retired on
 2026-10-14 ([#64](https://github.com/wazootech/wiki-templates/issues/64)), and

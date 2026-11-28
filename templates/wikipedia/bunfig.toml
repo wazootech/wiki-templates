@@ -1,0 +1,9 @@
+[install]
+# Wait a day before installing a new release. The Wiki engine is exempt: it is
+# pinned to an exact version, so a just-published release can be used.
+minimumReleaseAge = 86400
+minimumReleaseAgeExcludes = ["@jsr/wazoo__wiki"]
+
+[install.scopes]
+# JSR packages resolve through JSR's npm compatibility layer.
+"@jsr" = "https://npm.jsr.io"

@@ -13,7 +13,7 @@
   "devDependencies": {
     "@types/node": "24.19.2",
     "@types/prismjs": "1.26.5",
-    "@wazoo/wiki": "npm:@jsr/wazoo__wiki@0.7.0",
+    "@wazoo/wiki": "npm:@jsr/wazoo__wiki@0.7.2",
     "oxlint": "1.95.0",
     "prismjs": "1.30.0"
   }

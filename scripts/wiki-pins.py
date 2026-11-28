@@ -5,10 +5,11 @@ The pins this repo carries, and where they live (the `Downstream templates`
 rule in wazootech/wiki's AGENTS.md is what this automates):
 
   templates/**/.github/workflows/*.yml   wazootech-wiki==<version>  (PyPI)
-  templates/**/deno.json                 jsr:@wazoo/wiki@<version>  (JSR)
-  package.json (repo root)               npm:@jsr/wazoo__wiki@<version>  (JSR,
-                                         what Bun installs to type check the
-                                         template; bun.lock follows it)
+  templates/*/package.json               npm:@jsr/wazoo__wiki@<version>  (JSR,
+                                         what a scaffolded site builds with)
+  package.json (repo root)               the same JSR pin, what Bun installs to
+                                         type check the template; bun.lock
+                                         follows it
   templates/**/*.md                      the first two syntaxes, in prose
 
 The monorepo's own `.github/workflows/*.yml` installs the same CLI, so it is
@@ -53,8 +54,7 @@ NPM_JSR_ALIAS = "npm:@jsr/wazoo__wiki"
 PYPI_URL = f"https://pypi.org/pypi/{PYPI_PACKAGE}/json"
 JSR_URL = "https://jsr.io/@wazoo/wiki/meta.json"
 
-# A version starts with a digit and ends at a quote, space, or '/' (the JSR pin
-# is also used with a subpath: jsr:@wazoo/wiki@0.6.0/theme).
+# A version starts with a digit and ends at a quote, space, or '/'.
 VERSION = r"[0-9][0-9A-Za-z.\-+]*"
 
 # (label, registry, pattern) for every pin syntax the scanner understands.
@@ -63,11 +63,6 @@ PIN_PATTERNS = (
         f"{PYPI_PACKAGE}==",
         "pypi",
         re.compile(rf"(?P<package>{re.escape(PYPI_PACKAGE)}==)(?P<version>{VERSION})"),
-    ),
-    (
-        f"jsr:{JSR_PACKAGE}@",
-        "jsr",
-        re.compile(rf"(?P<package>jsr:{re.escape(JSR_PACKAGE)}@)(?P<version>{VERSION})"),
     ),
     (
         f"{NPM_JSR_ALIAS}@",
@@ -160,7 +155,7 @@ def in_scope_files(root: Path) -> tuple[list[Path], list[Path]]:
             template_files.extend(
                 sorted(p for p in workflows.iterdir() if p.suffix in {".yml", ".yaml"})
             )
-    template_files.extend(sorted(templates.rglob("deno.json")))
+    template_files.extend(sorted(templates.glob("*/package.json")))
     template_files.extend(managed_sources(templates))
     monorepo_files = sorted(
         p
